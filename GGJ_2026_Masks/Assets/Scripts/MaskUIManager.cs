@@ -1,0 +1,129 @@
+using UnityEngine;
+using UnityEngine.UI;
+
+[System.Serializable]
+public struct MaskButtonData
+{
+    public Button button;
+    public Sprite closedSprite;
+    public Sprite openSprite;
+    public string hexColor;
+}
+
+public class MaskUIManager : MonoBehaviour
+{
+    public MaskButtonData[] masks = new MaskButtonData[3];
+
+    int currentMaskIndex = -1;
+
+    void OnEnable()
+    {
+        EventManager.OnFilterChanged.AddListener(HandleFilterChanged);
+    }
+
+    void OnDisable()
+    {
+        EventManager.OnFilterChanged.RemoveListener(HandleFilterChanged);
+    }
+
+    void Start()
+    {
+        for (int i = 0; i < masks.Length; i++)
+        {
+            int idx = i;
+            if (masks[i].button != null)
+            {
+                masks[i].button.onClick.AddListener(() => OnMaskButtonPressed(idx));
+                Image icon = GetButtonIcon(masks[i].button);
+                if (icon != null)
+                {
+                    icon.sprite = masks[i].closedSprite;
+                    icon.color = HexToColorSafe(masks[i].hexColor);
+                }
+            }
+        }
+
+        UpdateAllButtonIcons();
+    }
+
+    void HandleFilterChanged(string filter)
+    {
+        if (filter == "ALL")
+        {
+            currentMaskIndex = -1;
+        }
+        else
+        {
+            currentMaskIndex = TipoToMaskIndex(filter);
+        }
+        UpdateAllButtonIcons();
+    }
+
+    void OnMaskButtonPressed(int index)
+    {
+        if (currentMaskIndex == index)
+        {
+            currentMaskIndex = -1;
+            EventManager.OnFilterChanged.Invoke("ALL");
+        }
+        else
+        {
+            currentMaskIndex = index;
+            EventManager.OnFilterChanged.Invoke(MaskIndexToTipo(index));
+        }
+
+        UpdateAllButtonIcons();
+    }
+
+    void UpdateAllButtonIcons()
+    {
+        for (int i = 0; i < masks.Length; i++)
+        {
+            var data = masks[i];
+            if (data.button == null) continue;
+            Image icon = GetButtonIcon(data.button);
+            if (icon == null) continue;
+
+            icon.sprite = (i == currentMaskIndex && data.openSprite != null) ? data.openSprite : data.closedSprite;
+            icon.color = HexToColorSafe(data.hexColor);
+        }
+    }
+
+    Image GetButtonIcon(Button b)
+    {
+        if (b == null) return null;
+        Image img = b.GetComponent<Image>();
+        if (img != null) return img;
+        return b.GetComponentInChildren<Image>();
+    }
+
+    string MaskIndexToTipo(int index)
+    {
+        switch (index)
+        {
+            default:
+            case 0: return "Tipo1";
+            case 1: return "Tipo2";
+            case 2: return "Tipo3";
+        }
+    }
+
+    int TipoToMaskIndex(string tipo)
+    {
+        switch (tipo)
+        {
+            case "Tipo1": return 0;
+            case "Tipo2": return 1;
+            case "Tipo3": return 2;
+            default: return -1;
+        }
+    }
+
+    Color HexToColorSafe(string hex)
+    {
+        if (string.IsNullOrEmpty(hex)) return Color.white;
+        if (!hex.StartsWith("#")) hex = "#" + hex;
+        if (ColorUtility.TryParseHtmlString(hex, out Color c)) return c;
+        return Color.white;
+    }
+}
