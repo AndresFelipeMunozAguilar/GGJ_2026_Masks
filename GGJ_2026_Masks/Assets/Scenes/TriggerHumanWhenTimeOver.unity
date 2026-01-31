@@ -119,6 +119,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &1028936859 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5046078664186597815, guid: c335ceafd10a0614e8521b95fe9ef97f, type: 3}
+  m_PrefabInstance: {fileID: 8607060768527540719}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1037083666
 GameObject:
   m_ObjectHideFlags: 0
@@ -1043,6 +1048,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Human
       objectReference: {fileID: 0}
+    - target: {fileID: 7909853330463850980, guid: de392d5c62d086c4cb71bc765704d059, type: 3}
+      propertyPath: spiritGem
+      value: 
+      objectReference: {fileID: 1028936859}
     - target: {fileID: 8286546369957991656, guid: de392d5c62d086c4cb71bc765704d059, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
