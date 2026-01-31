@@ -51,9 +51,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 180337d5ef5af314f9430967f92a92eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CountdownController
-  youLoseText: {fileID: 0}
+  humanGameOver: {fileID: 0}
   countdownBar: {fileID: 4614133076426376038}
-  maxTime: 10
+  maxTime: 4
+  blackoutPrefab: {fileID: 3310375945165879245, guid: 80286a0976820ca46857c55dc8320749, type: 3}
+  blackoutDuration: 4
+  gameOverAnimationDuration: 2
 --- !u!114 &7909879150544495837
 MonoBehaviour:
   m_ObjectHideFlags: 0
