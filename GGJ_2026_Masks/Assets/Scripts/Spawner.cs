@@ -3,14 +3,14 @@ using System.Collections.Generic;
 
 public class Spawner : MonoBehaviour
 {
-    [Header("Prefabs de cada tipo")]
+    [Header("Prefabs (cada uno con SpriteRenderer, Animator, BoxCollider2D, ObjectByType)")]
     public GameObject prefabTipo1;
     public GameObject prefabTipo2;
     public GameObject prefabTipo3;
-    public GameObject prefabImpostor;
 
-    [Header("Número de espíritus")]
+    [Header("Número de espíritus (sin contar impostor)")]
     public int numberItems = 20;
+    public int impostorCount = 1;
 
     [Header("Área de spawn (rectángulo)")]
     public Vector2 spawnAreaMin = new Vector2(-5, -5);
@@ -23,44 +23,89 @@ public class Spawner : MonoBehaviour
 
     void Start()
     {
-        Populate(numberItems);
-        SpawnImpostor();
+        SpawnAllRandomized();
     }
 
-    public GameObject Spawn(GameObject prefab)
+    void SpawnAllRandomized()
     {
-        Vector3 pos = GetValidPosition();
-        return Instantiate(prefab, pos, Quaternion.identity);
-    }
+        int total = numberItems + impostorCount;
+        HashSet<int> impostorIndices = new HashSet<int>();
+        while (impostorIndices.Count < impostorCount)
+            impostorIndices.Add(Random.Range(0, total));
 
-    public void Populate(int cantidad)
-    {
-        for (int i = 0; i < cantidad; i++)
+        for (int i = 0; i < total; i++)
         {
-            int tipo = Random.Range(1, 4); // 1, 2 o 3
-            GameObject prefab = null;
+            GameObject chosenPrefab = ChooseRandomPrefab();
+            Vector3 pos = GetValidPosition();
+            GameObject obj = Instantiate(chosenPrefab, pos, Quaternion.identity, transform);
 
-            switch (tipo)
+            var sr = obj.GetComponent<SpriteRenderer>();
+            var ob = obj.GetComponent<ObjectByType>();
+
+            if (sr == null || ob == null)
             {
-                case 1: prefab = prefabTipo1; break;
-                case 2: prefab = prefabTipo2; break;
-                case 3: prefab = prefabTipo3; break;
+                Debug.LogError("El prefab debe tener SpriteRenderer y ObjectByType.");
+                continue;
             }
 
-            Spawn(prefab);
+            if (impostorIndices.Contains(i))
+            {
+                ob.tipo = "Impostor";
+                int tipoImpostor = Random.Range(1,4);
+                switch (tipoImpostor)
+                {
+                case 1:
+                    ob.tipo = "";
+                    sr.color = HexToColor("FFF700");
+                    break;
+                case 2:
+                    ob.tipo = "";
+                    sr.color = HexToColor("00FFFC");
+                    break;
+                case 3:
+                    ob.tipo = "";
+                    sr.color = HexToColor("FF0020");
+                    break; 
+                }
+            }
+            else
+            {
+                int tipo = Random.Range(1, 4);
+                switch (tipo)
+                {
+                    case 1:
+                        ob.tipo = "Tipo1";
+                        sr.color = HexToColor("FFF700");
+                        break;
+                    case 2:
+                        ob.tipo = "Tipo2";
+                        sr.color = HexToColor("00FFFC");
+                        break;
+                    case 3:
+                        ob.tipo = "Tipo3";
+                        sr.color = HexToColor("FF0020");
+                        break;
+                }
+            }
         }
     }
 
-    public void SpawnImpostor()
+    GameObject ChooseRandomPrefab()
     {
-        Spawn(prefabImpostor);
+        int r = Random.Range(0, 3);
+        switch (r)
+        {
+            default:
+            case 0: return prefabTipo1;
+            case 1: return prefabTipo2;
+            case 2: return prefabTipo3;
+        }
     }
 
     private Vector3 GetValidPosition()
     {
         Vector3 pos;
         int attempts = 0;
-
         do
         {
             pos = new Vector3(
@@ -79,17 +124,28 @@ public class Spawner : MonoBehaviour
     private bool IsFarEnough(Vector3 pos)
     {
         foreach (var used in usedPositions)
-        {
             if (Vector3.Distance(pos, used) < minDistance)
                 return false;
-        }
         return true;
     }
 
-    void OnDrawGizmos() { 
-        Gizmos.color = Color.green; // Calculamos centro y tamaño del rectángulo 
-        Vector3 center = new Vector3( (spawnAreaMin.x + spawnAreaMax.x) / 2f, (spawnAreaMin.y + spawnAreaMax.y) / 2f, 0f ); 
-        Vector3 size = new Vector3( Mathf.Abs(spawnAreaMax.x - spawnAreaMin.x), Mathf.Abs(spawnAreaMax.y - spawnAreaMin.y), 0.1f ); 
-        Gizmos.DrawWireCube(center, size); 
+    Color HexToColor(string hex)
+    {
+        if (ColorUtility.TryParseHtmlString("#" + hex, out Color color))
+            return color;
+        return Color.white;
+    }
+
+    Color GetRandomColor()
+    {
+        return Color.HSVToRGB(Random.value, 0.9f, 1f);
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Vector3 center = new Vector3((spawnAreaMin.x + spawnAreaMax.x) / 2f, (spawnAreaMin.y + spawnAreaMax.y) / 2f, 0f);
+        Vector3 size = new Vector3(Mathf.Abs(spawnAreaMax.x - spawnAreaMin.x), Mathf.Abs(spawnAreaMax.y - spawnAreaMin.y), 0.1f);
+        Gizmos.DrawWireCube(center, size);
     }
 }
