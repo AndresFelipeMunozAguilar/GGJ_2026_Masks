@@ -5,6 +5,10 @@ public class CountdownSwitch : MonoBehaviour
     [SerializeField]
     private CountdownController countdownController;
 
+    public void Start()
+    {
+        StartCountdown();
+    }
     public void StartCountdown()
     {
         countdownController.enabled = true;
