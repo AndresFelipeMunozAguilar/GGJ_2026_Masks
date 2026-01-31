@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class CountdownController : MonoBehaviour
 {
@@ -20,6 +21,9 @@ public class CountdownController : MonoBehaviour
 
     [SerializeField]
     private float blackoutDuration = 2f;
+
+    [SerializeField]
+    private float gameOverAnimationDuration = 2f;
     public IEnumerator BlackoutSequence()
     {
         GameObject blackout = Instantiate(blackoutPrefab);
@@ -61,4 +65,5 @@ public class CountdownController : MonoBehaviour
         humanGameOver.TimeIsOver();
         enabled = false;
     }
+
 }

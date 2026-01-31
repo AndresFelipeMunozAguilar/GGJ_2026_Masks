@@ -54,6 +54,9 @@ MonoBehaviour:
   humanGameOver: {fileID: 0}
   countdownBar: {fileID: 4614133076426376038}
   maxTime: 4
+  blackoutPrefab: {fileID: 3310375945165879245, guid: 80286a0976820ca46857c55dc8320749, type: 3}
+  blackoutDuration: 4
+  gameOverAnimationDuration: 2
 --- !u!114 &7909879150544495837
 MonoBehaviour:
   m_ObjectHideFlags: 0
