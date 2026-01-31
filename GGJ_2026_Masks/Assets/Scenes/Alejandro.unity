@@ -1017,9 +1017,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Spawner
   prefabTipo1: {fileID: 7167377417486681011, guid: ca82fa6a1c701bb4c94df8b754cca9a8, type: 3}
-  prefabTipo2: {fileID: 7167377417486681011, guid: ca82fa6a1c701bb4c94df8b754cca9a8, type: 3}
-  prefabTipo3: {fileID: 7167377417486681011, guid: ca82fa6a1c701bb4c94df8b754cca9a8, type: 3}
-  numberItems: 3
+  prefabTipo2: {fileID: 7167377417486681011, guid: 1c62b876a8957da40a2522af844e1fe4, type: 3}
+  prefabTipo3: {fileID: 7167377417486681011, guid: 16828fde0538c2243b36e92fd1d019b0, type: 3}
+  numberItems: 10
   impostorCount: 1
   spawnAreaMin: {x: -20, y: -9}
   spawnAreaMax: {x: 20, y: 9}

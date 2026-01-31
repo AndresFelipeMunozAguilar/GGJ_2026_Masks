@@ -74,7 +74,7 @@ public class SpiritRevealController : MonoBehaviour
             yield return new WaitForSeconds(wait);
         }
 
-        // Mantener último frame
+        
         if (bodyRenderer != null) bodyRenderer.sprite = bodyFrames[len - 1];
         if (headRenderer != null) headRenderer.sprite = headFrames[len - 1];
         if (maskRenderer != null) maskRenderer.sprite = maskFrames[len - 1];
