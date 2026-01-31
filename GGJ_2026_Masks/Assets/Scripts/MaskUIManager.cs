@@ -13,6 +13,11 @@ public struct MaskButtonData
 public class MaskUIManager : MonoBehaviour
 {
     public MaskButtonData[] masks = new MaskButtonData[3];
+    public AudioSource audioSource;
+    public AudioClip clipNone;
+    public AudioClip clipTipo1;
+    public AudioClip clipTipo2;
+    public AudioClip clipTipo3;
 
     int currentMaskIndex = -1;
     Color[] originalColors;
@@ -48,6 +53,7 @@ public class MaskUIManager : MonoBehaviour
         }
 
         UpdateAllButtonIcons();
+        PlayClipForIndex(-1);
     }
 
     void HandleFilterChanged(string filter)
@@ -61,6 +67,7 @@ public class MaskUIManager : MonoBehaviour
             currentMaskIndex = TipoToMaskIndex(filter);
         }
         UpdateAllButtonIcons();
+        PlayClipForIndex(currentMaskIndex);
     }
 
     void OnMaskButtonPressed(int index)
@@ -77,6 +84,7 @@ public class MaskUIManager : MonoBehaviour
         }
 
         UpdateAllButtonIcons();
+        PlayClipForIndex(currentMaskIndex);
     }
 
     void UpdateAllButtonIcons()
@@ -130,5 +138,30 @@ public class MaskUIManager : MonoBehaviour
         if (!hex.StartsWith("#")) hex = "#" + hex;
         if (ColorUtility.TryParseHtmlString(hex, out Color c)) return c;
         return Color.white;
+    }
+
+    void PlayClipForIndex(int maskIndex)
+    {
+        if (audioSource == null) return;
+
+        AudioClip clipToPlay = null;
+        switch (maskIndex)
+        {
+            case -1: clipToPlay = clipNone; break;
+            case 0: clipToPlay = clipTipo1; break;
+            case 1: clipToPlay = clipTipo2; break;
+            case 2: clipToPlay = clipTipo3; break;
+        }
+
+        if (clipToPlay == null)
+        {
+            audioSource.Stop();
+            return;
+        }
+
+        if (audioSource.clip == clipToPlay && audioSource.isPlaying) return;
+
+        audioSource.clip = clipToPlay;
+        audioSource.Play();
     }
 }
