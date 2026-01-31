@@ -1,9 +1,19 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
+
+    [SerializeField]
+    private float blackoutDuration = 2f;
+
+    [SerializeField]
+    private float gameOverAnimationDuration = 2f;
+
+    [SerializeField]
+    private GameObject blackoutPrefab;
 
     public enum SceneIndex
     {
@@ -11,6 +21,25 @@ public class GameManager : MonoBehaviour
         TriggerHumanWhenGameOver = 1,
         GameOver = 2,
         Menu = 3,
+    }
+
+
+
+    public IEnumerator BlackoutSequence(Vector3 blakcoutHolePosition)
+    {
+        Debug.Log("CountdownController: Starting blackout sequence.");
+        GameObject blackout = Instantiate(blackoutPrefab);
+        Transform blackoutHole = blackout.transform.GetChild(0);
+
+        yield return new WaitForSeconds(blackoutDuration);
+
+        blackoutHole.gameObject.SetActive(true);
+        blackoutHole.position = blakcoutHolePosition;
+
+        yield return new WaitForSeconds(gameOverAnimationDuration);
+
+        Debug.Log("CountdownController: Blackout sequence completed.");
+        ChangeScene(GameManager.SceneIndex.GameOver);
     }
 
     private void Awake()
