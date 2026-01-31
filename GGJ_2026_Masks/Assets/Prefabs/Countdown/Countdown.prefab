@@ -145,7 +145,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 1
-  m_FillAmount: 0.154
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -203,8 +203,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CountdownController
   humanGameOver: {fileID: 0}
-  countdownBar: {fileID: 0}
-  maxTime: 4
+  countdownOrb: {fileID: 9015994547436817250}
+  maxTime: 5
   blackoutPrefab: {fileID: 3310375945165879245, guid: 80286a0976820ca46857c55dc8320749, type: 3}
   blackoutDuration: 4
   gameOverAnimationDuration: 2

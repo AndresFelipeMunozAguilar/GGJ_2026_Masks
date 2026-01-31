@@ -1018,6 +1018,14 @@ PrefabInstance:
       propertyPath: humanGameOver
       value: 
       objectReference: {fileID: 1848237919}
+    - target: {fileID: 7692770642844388599, guid: aab2e2eb00765db4fa696f9c1cb31953, type: 3}
+      propertyPath: m_Name
+      value: CountdownOrb
+      objectReference: {fileID: 0}
+    - target: {fileID: 8682998336962076408, guid: aab2e2eb00765db4fa696f9c1cb31953, type: 3}
+      propertyPath: m_Name
+      value: CountdownOrbBakcground
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
