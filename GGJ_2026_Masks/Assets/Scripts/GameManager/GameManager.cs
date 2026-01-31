@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     public enum SceneIndex
     {
         SampleScene = 0,
-        TriggerThiefWhenGameOver = 1,
+        TriggerHumanWhenGameOver = 1,
         GameOver = 2
     }
 
