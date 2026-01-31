@@ -717,7 +717,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7909853330463850980, guid: de392d5c62d086c4cb71bc765704d059, type: 3}
   m_PrefabInstance: {fileID: 9062450379235383108}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 9062450379235383109}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e8b11460be521cd42a82d5c03833f774, type: 3}
@@ -1104,6 +1104,10 @@ PrefabInstance:
       propertyPath: spiritGem
       value: 
       objectReference: {fileID: 1028936859}
+    - target: {fileID: 7909853330463850980, guid: de392d5c62d086c4cb71bc765704d059, type: 3}
+      propertyPath: humanMovement
+      value: 
+      objectReference: {fileID: 9062450379235383110}
     - target: {fileID: 8286546369957991656, guid: de392d5c62d086c4cb71bc765704d059, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1144,11 +1148,35 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9147295263951280916, guid: de392d5c62d086c4cb71bc765704d059, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7778716936714630562, guid: de392d5c62d086c4cb71bc765704d059, type: 3}
+      insertIndex: 3
+      addedObject: {fileID: 9062450379235383110}
   m_SourcePrefab: {fileID: 100100000, guid: de392d5c62d086c4cb71bc765704d059, type: 3}
+--- !u!1 &9062450379235383109 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7778716936714630562, guid: de392d5c62d086c4cb71bc765704d059, type: 3}
+  m_PrefabInstance: {fileID: 9062450379235383108}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &9062450379235383110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9062450379235383109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b72131cf71492b242ba9de8c94ba1d51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Movement
+  movementType: 0
+  speed: 5
+  radius: 3
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

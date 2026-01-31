@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,7 +9,8 @@ public class GameManager : MonoBehaviour
     {
         SampleScene = 0,
         TriggerHumanWhenGameOver = 1,
-        GameOver = 2
+        GameOver = 2,
+        Menu = 3,
     }
 
     private void Awake()
@@ -24,10 +26,25 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
-    public void LoadScene(SceneIndex sceneIndex)
+    public void PlayTutorial()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene((int)sceneIndex);
+        ChangeScene(SceneIndex.SampleScene);
+    }
+
+    public void PlayGame()
+    {
+        ChangeScene(SceneIndex.TriggerHumanWhenGameOver);
+    }
+
+    public void ChangeScene(SceneIndex sceneIndex)
+    {
+        SceneManager.LoadScene((int)sceneIndex);
+    }
+
+    public void QuitGame()
+    {
+        Debug.Log("Saliendo del juego...");
+        Application.Quit();
     }
 
 }
