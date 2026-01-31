@@ -15,6 +15,7 @@ public class MaskUIManager : MonoBehaviour
     public MaskButtonData[] masks = new MaskButtonData[3];
 
     int currentMaskIndex = -1;
+    Color[] originalColors;
 
     void OnEnable()
     {
@@ -28,17 +29,20 @@ public class MaskUIManager : MonoBehaviour
 
     void Start()
     {
+        originalColors = new Color[masks.Length];
+
         for (int i = 0; i < masks.Length; i++)
         {
             int idx = i;
-            if (masks[i].button != null)
+            var data = masks[i];
+            if (data.button != null)
             {
-                masks[i].button.onClick.AddListener(() => OnMaskButtonPressed(idx));
-                Image icon = GetButtonIcon(masks[i].button);
+                data.button.onClick.AddListener(() => OnMaskButtonPressed(idx));
+                Image icon = GetButtonIcon(data.button);
                 if (icon != null)
                 {
-                    icon.sprite = masks[i].closedSprite;
-                    icon.color = HexToColorSafe(masks[i].hexColor);
+                    originalColors[i] = icon.color;
+                    icon.sprite = data.closedSprite;
                 }
             }
         }
@@ -84,8 +88,9 @@ public class MaskUIManager : MonoBehaviour
             Image icon = GetButtonIcon(data.button);
             if (icon == null) continue;
 
-            icon.sprite = (i == currentMaskIndex && data.openSprite != null) ? data.openSprite : data.closedSprite;
-            icon.color = HexToColorSafe(data.hexColor);
+            bool active = (i == currentMaskIndex);
+            icon.sprite = (active && data.openSprite != null) ? data.openSprite : data.closedSprite;
+            icon.color = active ? HexToColorSafe(data.hexColor) : originalColors[i];
         }
     }
 
