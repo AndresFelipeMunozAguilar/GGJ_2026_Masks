@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 [System.Serializable]
 public struct MaskButtonData
@@ -13,14 +14,22 @@ public struct MaskButtonData
 public class MaskUIManager : MonoBehaviour
 {
     public MaskButtonData[] masks = new MaskButtonData[3];
+
     public AudioSource audioSource;
     public AudioClip clipNone;
     public AudioClip clipTipo1;
     public AudioClip clipTipo2;
     public AudioClip clipTipo3;
+    public float crossfadeDuration = 0.6f;
 
     int currentMaskIndex = -1;
     Color[] originalColors;
+
+    AudioSource sourceA;
+    AudioSource sourceB;
+    bool aIsActive = true;
+    float[] clipPositions = new float[4]; 
+    Coroutine fadeCoroutine;
 
     void OnEnable()
     {
@@ -35,6 +44,24 @@ public class MaskUIManager : MonoBehaviour
     void Start()
     {
         originalColors = new Color[masks.Length];
+
+        if (audioSource != null)
+        {
+            sourceA = audioSource;
+            sourceB = gameObject.AddComponent<AudioSource>();
+        }
+        else
+        {
+            sourceA = gameObject.AddComponent<AudioSource>();
+            sourceB = gameObject.AddComponent<AudioSource>();
+        }
+
+        sourceA.loop = true;
+        sourceB.loop = true;
+        sourceA.playOnAwake = false;
+        sourceB.playOnAwake = false;
+        sourceA.volume = 1f;
+        sourceB.volume = 0f;
 
         for (int i = 0; i < masks.Length; i++)
         {
@@ -53,7 +80,13 @@ public class MaskUIManager : MonoBehaviour
         }
 
         UpdateAllButtonIcons();
-        PlayClipForIndex(-1);
+        StartCoroutine(EnsureInitialClipPlaying());
+    }
+
+    IEnumerator EnsureInitialClipPlaying()
+    {
+        yield return null;
+        PlayClipForIndex(-1, immediate: true);
     }
 
     void HandleFilterChanged(string filter)
@@ -140,28 +173,89 @@ public class MaskUIManager : MonoBehaviour
         return Color.white;
     }
 
-    void PlayClipForIndex(int maskIndex)
+    AudioClip GetClipByMaskIndex(int maskIndex)
     {
-        if (audioSource == null) return;
-
-        AudioClip clipToPlay = null;
         switch (maskIndex)
         {
-            case -1: clipToPlay = clipNone; break;
-            case 0: clipToPlay = clipTipo1; break;
-            case 1: clipToPlay = clipTipo2; break;
-            case 2: clipToPlay = clipTipo3; break;
+            case -1: return clipNone;
+            case 0: return clipTipo1;
+            case 1: return clipTipo2;
+            case 2: return clipTipo3;
+            default: return null;
         }
+    }
 
-        if (clipToPlay == null)
+    void PlayClipForIndex(int maskIndex, bool immediate = false)
+    {
+        AudioClip targetClip = GetClipByMaskIndex(maskIndex);
+        int clipArrayIndex = maskIndex + 1; 
+
+        if (targetClip == null)
         {
-            audioSource.Stop();
+            if (fadeCoroutine != null) StopCoroutine(fadeCoroutine);
+            sourceA.Stop();
+            sourceB.Stop();
             return;
         }
 
-        if (audioSource.clip == clipToPlay && audioSource.isPlaying) return;
+        AudioSource active = aIsActive ? sourceA : sourceB;
+        AudioSource inactive = aIsActive ? sourceB : sourceA;
 
-        audioSource.clip = clipToPlay;
-        audioSource.Play();
+        if (active.clip == targetClip && active.isPlaying)
+        {
+            return;
+        }
+
+        if (active.clip != null)
+        {
+            clipPositions[GetClipIndexFromClip(active.clip)] = active.time;
+        }
+
+        float resumeTime = clipPositions[clipArrayIndex];
+
+        inactive.clip = targetClip;
+        try { inactive.time = resumeTime; } catch { inactive.time = 0f; }
+        inactive.Play();
+
+        if (immediate || crossfadeDuration <= 0f)
+        {
+            active.volume = 0f;
+            inactive.volume = 1f;
+            active.Stop();
+            aIsActive = !aIsActive;
+            return;
+        }
+
+        if (fadeCoroutine != null) StopCoroutine(fadeCoroutine);
+        fadeCoroutine = StartCoroutine(Crossfade(active, inactive, crossfadeDuration));
+    }
+
+    int GetClipIndexFromClip(AudioClip clip)
+    {
+        if (clip == clipNone) return 0;
+        if (clip == clipTipo1) return 1;
+        if (clip == clipTipo2) return 2;
+        if (clip == clipTipo3) return 3;
+        return 0;
+    }
+
+    IEnumerator Crossfade(AudioSource from, AudioSource to, float duration)
+    {
+        float t = 0f;
+        float fromStart = from.volume;
+        float toStart = to.volume;
+        while (t < duration)
+        {
+            t += Time.deltaTime;
+            float f = Mathf.Clamp01(t / duration);
+            from.volume = Mathf.Lerp(fromStart, 0f, f);
+            to.volume = Mathf.Lerp(toStart, 1f, f);
+            yield return null;
+        }
+        from.volume = 0f;
+        to.volume = 1f;
+        from.Stop();
+        aIsActive = !aIsActive;
+        fadeCoroutine = null;
     }
 }
