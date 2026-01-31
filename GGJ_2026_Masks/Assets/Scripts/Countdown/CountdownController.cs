@@ -8,9 +8,9 @@ public class CountdownController : MonoBehaviour
     private HumanGameOver humanGameOver;
 
     [SerializeField]
-    private Image countdownBar;
+    private Image countdownOrb;
 
-    private float timeRemaining;
+    private float currentTime = 0f;
 
     // El tiempo está en segundos
     [SerializeField]
@@ -47,17 +47,17 @@ public class CountdownController : MonoBehaviour
 
     public void Start()
     {
-        Debug.Log("Encontrando GameManager en CountdownController OnEnable");
-        timeRemaining = maxTime;
+        // Debug.Log("Encontrando GameManager en CountdownController OnEnable");
+        currentTime = 0f;
         gameManager = GameManager.Instance;
     }
 
     public void Update()
     {
-        if (timeRemaining > 0)
+        if (currentTime < maxTime)
         {
-            timeRemaining -= Time.deltaTime;
-            countdownBar.fillAmount = timeRemaining / maxTime;
+            currentTime += Time.deltaTime;
+            countdownOrb.fillAmount = currentTime / maxTime;
         }
         else
         {
@@ -68,7 +68,7 @@ public class CountdownController : MonoBehaviour
     public void CountdownIsOver()
     {
         Debug.Log("COUNTDOWN SAYS: TIME IS OVER");
-        timeRemaining = 0;
+        currentTime = maxTime;
         StartCoroutine(BlackoutSequence());
         humanGameOver.TimeIsOver();
         enabled = false;
