@@ -30,6 +30,7 @@ public class CountdownController : MonoBehaviour
 
     public IEnumerator BlackoutSequence()
     {
+        Debug.Log("CountdownController: Starting blackout sequence.");
         GameObject blackout = Instantiate(blackoutPrefab);
         Transform blackoutHole = blackout.transform.GetChild(0);
 
@@ -41,12 +42,12 @@ public class CountdownController : MonoBehaviour
         yield return new WaitForSeconds(gameOverAnimationDuration);
 
         Debug.Log("CountdownController: Blackout sequence completed.");
-        gameManager.LoadScene(GameManager.SceneIndex.GameOver);
-
-
+        gameManager.ChangeScene(GameManager.SceneIndex.GameOver);
     }
+
     public void Start()
     {
+        Debug.Log("Encontrando GameManager en CountdownController OnEnable");
         timeRemaining = maxTime;
         gameManager = GameManager.Instance;
     }

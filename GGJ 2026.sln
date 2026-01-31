@@ -1,0 +1,29 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GGJ_2026_Masks", "GGJ_2026_Masks", "{B1DA027E-6078-F4B6-CFE9-5C939E9FA17E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "GGJ_2026_Masks\Assembly-CSharp.csproj", "{51423830-4E7F-2247-F33E-255AC6BA4B7F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{51423830-4E7F-2247-F33E-255AC6BA4B7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51423830-4E7F-2247-F33E-255AC6BA4B7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51423830-4E7F-2247-F33E-255AC6BA4B7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51423830-4E7F-2247-F33E-255AC6BA4B7F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{51423830-4E7F-2247-F33E-255AC6BA4B7F} = {B1DA027E-6078-F4B6-CFE9-5C939E9FA17E}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AF9911B3-0D4A-47B4-9A8B-36E25CDF6640}
+	EndGlobalSection
+EndGlobal
