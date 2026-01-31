@@ -24,6 +24,10 @@ public class CountdownController : MonoBehaviour
 
     [SerializeField]
     private float gameOverAnimationDuration = 2f;
+
+    [SerializeField]
+    private GameManager gameManager;
+
     public IEnumerator BlackoutSequence()
     {
         GameObject blackout = Instantiate(blackoutPrefab);
@@ -37,11 +41,14 @@ public class CountdownController : MonoBehaviour
         yield return new WaitForSeconds(gameOverAnimationDuration);
 
         Debug.Log("CountdownController: Blackout sequence completed.");
+        gameManager.LoadScene(GameManager.SceneIndex.GameOver);
+
 
     }
     public void Start()
     {
         timeRemaining = maxTime;
+        gameManager = GameManager.Instance;
     }
 
     public void Update()
