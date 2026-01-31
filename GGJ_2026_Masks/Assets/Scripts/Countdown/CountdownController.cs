@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class CountdownController : MonoBehaviour
 {
     [SerializeField]
-    private GameObject youLoseText;
+    private HumanGameOver humanGameOver;
 
 
     [SerializeField]
@@ -38,7 +38,7 @@ public class CountdownController : MonoBehaviour
     {
         Debug.Log("COUNTDOWN SAYS: TIME IS OVER");
         timeRemaining = 0;
-        youLoseText.SetActive(true);
+        humanGameOver.TimeIsOver();
         enabled = false;
     }
 }
