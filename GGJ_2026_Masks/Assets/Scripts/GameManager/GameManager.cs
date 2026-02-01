@@ -6,11 +6,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
-    [SerializeField]
-    private float blackoutDuration = 2f;
+    public float blackoutDuration = 2f;
 
-    [SerializeField]
-    private float animationDuration = 2f;
+    public float animationDuration = 2f;
 
     [SerializeField]
     private GameObject blackoutPrefab;
@@ -28,8 +26,6 @@ public class GameManager : MonoBehaviour
         Win = 8,
     }
 
-
-
     public IEnumerator BlackoutSequence(Vector3 blakcoutHolePosition)
     {
         Debug.Log("CountdownController: Starting blackout sequence.");
@@ -41,7 +37,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(blackoutDuration);
 
         blackoutHole.gameObject.SetActive(true);
-        
+
         blackoutHole.position = blakcoutHolePosition;
 
         // Sacar por consola que se activo el hueco en el blakcout
@@ -56,6 +52,39 @@ public class GameManager : MonoBehaviour
         Debug.Log("CountdownController: Blackout sequence completed.");
 
         Destroy(blackout);
+    }
+
+    public IEnumerator FinalBlackoutGameOverSequence()
+    {
+        // Esperar la duración del backout y la animación
+        yield return new WaitForSeconds(blackoutDuration + animationDuration);
+
+        // Instanciar el prefab de blackout
+        GameObject blackout = Instantiate(blackoutPrefab);
+
+        // Cambiar a la pantalla de Game Over
+        ChangeScene(SceneIndex.GameOver);
+    }
+
+    public IEnumerator FinalWinSequence()
+    {
+        // Esta función se llama justo después del blackout y de haber esperado el fundido en negro, se espera la animación
+        yield return new WaitForSeconds(animationDuration);
+
+        // Desactivar el orbe
+        CountdownController countdownController = FindFirstObjectByType<CountdownController>();
+        countdownController.DisableOrb();
+
+        // Instanciar el prefab de blackout y cambiarle el color a blanco
+        GameObject blackout = Instantiate(blackoutPrefab);
+        SpriteRenderer sr = blackout.GetComponent<SpriteRenderer>();
+        sr.color = Color.white;
+
+        // Esperar un segundo
+        yield return new WaitForSeconds(1f);
+
+        // Cambiar a la pantalla de victoria
+        ChangeScene(SceneIndex.Win);
     }
 
     private void Awake()
