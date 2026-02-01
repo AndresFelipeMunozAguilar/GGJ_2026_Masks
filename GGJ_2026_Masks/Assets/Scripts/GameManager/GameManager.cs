@@ -17,12 +17,13 @@ public class GameManager : MonoBehaviour
 
     public enum SceneIndex
     {
-        SampleScene = 0,
-        TriggerHumanWhenGameOver = 1,
+        Menu = 0,
+        Principal = 1,
         GameOver = 2,
-        Alejandro = 3,
-        UpdateCoundown = 4,
-        Menu = 5
+        SampleScene = 3,
+        TriggerHumanWhenGameOver = 4,
+        Alejandro = 5,
+        UpdateCoundown = 6,
     }
 
 
@@ -33,16 +34,20 @@ public class GameManager : MonoBehaviour
         GameObject blackout = Instantiate(blackoutPrefab);
         Transform blackoutHole = blackout.transform.GetChild(0);
 
+        //Sacar por consola que se va a iniciar el blackout
+        Debug.Log($"CountdownController: Blackout iniciado y va a esperar {blackoutDuration} segs.");
         yield return new WaitForSeconds(blackoutDuration);
 
         blackoutHole.gameObject.SetActive(true);
-        // convertir la posición world del humano a local respecto al padre del agujero
-
+        
         blackoutHole.position = blakcoutHolePosition;
 
+        // Sacar por consola que se activo el hueco en el blakcout
+        Debug.Log($"CountdownController: Blackout hole activated. Instantiatied in position {blakcoutHolePosition}. Now waiting {gameOverAnimationDuration} segs for game over animation.");
 
-        // Debug.Log("La posicion del global del agujero es: " + blackoutHole.position);
-        // Debug.Log("La posicion del local del agujero  es: " + blackoutHole.localPosition);
+        // Indicar que se va a esperar la duracion de la animacion de game over
+
+        Debug.Log($"CountdownController: Waiting for game over animation duration of {gameOverAnimationDuration} seconds.");
 
         yield return new WaitForSeconds(gameOverAnimationDuration);
 

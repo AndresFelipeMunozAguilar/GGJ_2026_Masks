@@ -18,7 +18,7 @@ public class ButtonsManager : MonoBehaviour
 
     public void PlayGame()
     {
-        gameManager.ChangeScene(GameManager.SceneIndex.TriggerHumanWhenGameOver);
+        gameManager.ChangeScene(GameManager.SceneIndex.Principal);
     }
 
     public void QuitGame()

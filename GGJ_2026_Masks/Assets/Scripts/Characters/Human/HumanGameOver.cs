@@ -6,9 +6,6 @@ public class HumanGameOver : MonoBehaviour
     private GameObject spiritGem;
 
     [SerializeField]
-    private Movement humanMovement;
-
-    [SerializeField]
     private float radius = 5f; // Adjust this value as needed
 
     [SerializeField]
@@ -16,11 +13,6 @@ public class HumanGameOver : MonoBehaviour
 
     public void TimeIsOver()
     {
-        // Debug.Log("HumanGameOver: Time is over. Triggering game over sequence.");
-
-        // Desactivar el script de movimiento ciclico
-        humanMovement.enabled = false;
-
         // Encontrar la posición del Spirit Gem y
         // calcular la nueva posición del humano
         // pasando los grados a radianes
@@ -29,7 +21,9 @@ public class HumanGameOver : MonoBehaviour
 
         // Calcular la nueva posición usando la coordenadas polares
         Vector3 offset = new Vector3(Mathf.Cos(radianAngle) * radius, Mathf.Sin(radianAngle) * radius, 0f);
-        transform.position = spiritGemPosition + offset;
+        Vector3 positionHuman = spiritGemPosition + offset;
 
+        // Spawnear el humano en la nueva posición
+        transform.position = positionHuman;
     }
 }
