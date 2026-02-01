@@ -20,7 +20,9 @@ public class GameManager : MonoBehaviour
         SampleScene = 0,
         TriggerHumanWhenGameOver = 1,
         GameOver = 2,
-        Menu = 3,
+        Alejandro = 3,
+        UpdateCoundown = 4,
+        Menu = 5
     }
 
 
