@@ -196,6 +196,8 @@ GameObject:
   - component: {fileID: 6777301878695924962}
   - component: {fileID: 5299685722462456423}
   - component: {fileID: 242741570581630234}
+  - component: {fileID: 3181961612214489587}
+  - component: {fileID: 7399755144786509426}
   m_Layer: 0
   m_Name: Spirit3New
   m_TagString: Untagged
@@ -486,6 +488,33 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 23a1782ce7365a64aa51f0c72fbd3b3d, type: 3}
   revealFps: 12
   failFps: 12
+--- !u!114 &3181961612214489587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7167377417486681011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 978ac15f1a0a8e54680cdd785ab0d8a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpriteSorterGroup
+--- !u!114 &7399755144786509426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7167377417486681011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b72131cf71492b242ba9de8c94ba1d51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Movement
+  movementType: 0
+  speed: 5
+  radius: 3
 --- !u!1 &8281164949737984792
 GameObject:
   m_ObjectHideFlags: 0
