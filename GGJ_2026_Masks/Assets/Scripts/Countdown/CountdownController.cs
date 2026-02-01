@@ -6,6 +6,10 @@ public class CountdownController : MonoBehaviour
     [SerializeField]
     private HumanGameOver humanGameOver;
 
+    // Referencia del objeto Spawner para desactivarlo
+    [SerializeField]
+    private Spawner spawner;
+
     [SerializeField]
     private Image countdownOrb;
 
@@ -50,6 +54,11 @@ public class CountdownController : MonoBehaviour
         Vector3 blackoutHolePosition = new Vector3(0f, 0f, 0f);
 
         StartCoroutine(gameManager.BlackoutSequence(blackoutHolePosition));
+
+        gameManager.ChangeScene(GameManager.SceneIndex.GameOver);
+
+        // Desactivar el spawner y por tanto todos los demás personajes
+        spawner.gameObject.SetActive(false);        
 
         // Desactivar a los hijos del countdown para que no se vea mas
         foreach (Transform child in transform)

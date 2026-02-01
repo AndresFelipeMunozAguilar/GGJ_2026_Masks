@@ -74,6 +74,8 @@ public class ClickManager : MonoBehaviour
     IEnumerator HandleReveal(SpiritRevealController reveal, Color impostorColor)
     {
         isBlocked = true;
+        // TODO: LLamar a la pantalla negra con el hueco para enfocar al personaje
+
         reveal.Reveal(impostorColor);
 
         // esperar hasta que termine la animación de revelado
@@ -83,11 +85,16 @@ public class ClickManager : MonoBehaviour
         // 👇 No reanudar movimiento del impostor
         isBlocked = false;
 
-        // aquí puedes poner tu lógica de cambio de escena
+        // TODO Hacer fundido en blanco 
+
+        // Navegar a la escena de victoria
+        GameManager.Instance.ChangeScene(GameManager.SceneIndex.Win);
     }
 
     IEnumerator HandleFail(SpiritRevealController reveal, Movement movement)
     {
+        // TODO: LLamar a la pantalla negra con el hueco para enfocar al personaje
+
         isBlocked = true;
         reveal.FailReveal();
 
