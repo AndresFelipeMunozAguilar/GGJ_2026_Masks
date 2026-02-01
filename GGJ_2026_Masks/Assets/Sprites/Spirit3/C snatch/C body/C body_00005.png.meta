@@ -3,14 +3,14 @@ guid: 3d842b9fab48d42489b03168bbef9711
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5985596953042968274
-    second: C body_00005_0
+      213: 5022482383083479751
+    second: c body_00005_0
   - first:
-      213: 190640707859451725
-    second: C body_00005_1
+      213: -749515552510429459
+    second: c body_00005_1
   - first:
-      213: 3357710273349368019
-    second: C body_00005_2
+      213: -7941297053354222948
+    second: c body_00005_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -106,7 +106,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: C body_00005_0
+      name: c body_00005_0
       rect:
         serializedVersion: 2
         x: 678
@@ -121,14 +121,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2de59ca37bc111350800000000000000
-      internalID: 5985596953042968274
+      spriteID: 7c2295efd1173b540800000000000000
+      internalID: 5022482383083479751
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: C body_00005_1
+      name: c body_00005_1
       rect:
         serializedVersion: 2
         x: 714
@@ -143,14 +143,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d4f01b7b6ba45a200800000000000000
-      internalID: 190640707859451725
+      spriteID: de63cfa739f2995f0800000000000000
+      internalID: -749515552510429459
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: C body_00005_2
+      name: c body_00005_2
       rect:
         serializedVersion: 2
         x: 1165
@@ -165,8 +165,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3d83ba524bbf89e20800000000000000
-      internalID: 3357710273349368019
+      spriteID: c9a17fe9768dac190800000000000000
+      internalID: -7941297053354222948
       vertices: []
       indices: 
       edges: []
@@ -185,9 +185,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      C body_00005_0: 5985596953042968274
-      C body_00005_1: 190640707859451725
-      C body_00005_2: 3357710273349368019
+      c body_00005_0: 5022482383083479751
+      c body_00005_1: -749515552510429459
+      c body_00005_2: -7941297053354222948
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

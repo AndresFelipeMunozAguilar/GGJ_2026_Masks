@@ -3,14 +3,14 @@ guid: a3b0256fe4a6c3a44b02804d8c9d4a00
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6386957173889355696
-    second: C body_00022_0
+      213: -6127736737391432316
+    second: c body_00022_0
   - first:
-      213: -5035151441339626714
-    second: C body_00022_1
+      213: 2508961981321581545
+    second: c body_00022_1
   - first:
-      213: 5857854691504164949
-    second: C body_00022_2
+      213: -2308334704031662785
+    second: c body_00022_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -106,7 +106,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: C body_00022_0
+      name: c body_00022_0
       rect:
         serializedVersion: 2
         x: 678
@@ -121,14 +121,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0bfce49c5b703a850800000000000000
-      internalID: 6386957173889355696
+      spriteID: 48d2caa47e7e5faa0800000000000000
+      internalID: -6127736737391432316
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: C body_00022_1
+      name: c body_00022_1
       rect:
         serializedVersion: 2
         x: 725
@@ -143,14 +143,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 62bc7a4017c8f1ab0800000000000000
-      internalID: -5035151441339626714
+      spriteID: 9e312a301af91d220800000000000000
+      internalID: 2508961981321581545
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: C body_00022_2
+      name: c body_00022_2
       rect:
         serializedVersion: 2
         x: 1165
@@ -165,8 +165,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 55016f04ec74b4150800000000000000
-      internalID: 5857854691504164949
+      spriteID: f3d7c7711d527ffd0800000000000000
+      internalID: -2308334704031662785
       vertices: []
       indices: 
       edges: []
@@ -185,9 +185,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      C body_00022_0: 6386957173889355696
-      C body_00022_1: -5035151441339626714
-      C body_00022_2: 5857854691504164949
+      c body_00022_0: -6127736737391432316
+      c body_00022_1: 2508961981321581545
+      c body_00022_2: -2308334704031662785
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -105,10 +105,14 @@ public class MaskUIManager : MonoBehaviour
 
     void OnMaskButtonPressed(int index)
     {
+        //if (overlayAnimator != null && overlayAnimator.IsAnimating()) return;
+
         if (currentMaskIndex == index)
         {
             currentMaskIndex = -1;
             EventManager.OnFilterChanged.Invoke("ALL");
+            
+            
         }
         else
         {
