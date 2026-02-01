@@ -15,7 +15,11 @@ public class ButtonsManager : MonoBehaviour
     {
         gameManager.ChangeScene(GameManager.SceneIndex.Tutorial);
     }
-
+    
+    public void PlayMenuPrincipal()
+    {
+        gameManager.ChangeScene(GameManager.SceneIndex.Menu);
+    }
     public void PlayGame()
     {
         gameManager.ChangeScene(GameManager.SceneIndex.Principal);
