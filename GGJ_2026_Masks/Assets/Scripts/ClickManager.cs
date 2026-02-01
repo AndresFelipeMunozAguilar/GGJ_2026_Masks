@@ -12,11 +12,15 @@ public class ClickManager : MonoBehaviour
     private CountdownController countdownController;
 
     private Movement[] allMovements;
+    [Header("Sonido de click en personajes")] public AudioClip clickSound; 
+    private AudioSource audioSource; 
 
-    void Awake()
-    {
-        mainCam = Camera.main;
-    }
+    void Awake() { 
+    mainCam = Camera.main; // Crear o recuperar 
+    AudioSource audioSource = GetComponent<AudioSource>(); 
+    if (audioSource == null) audioSource = gameObject.AddComponent<AudioSource>(); 
+    audioSource.playOnAwake = false; }
+
 
     void Update()
     {
@@ -34,6 +38,8 @@ public class ClickManager : MonoBehaviour
 
             if (hit.collider != null)
             {
+                PlayClickSound();
+
                 var movement = hit.collider.GetComponent<Movement>();
                 if (movement == null) movement = hit.collider.GetComponentInParent<Movement>();
 
@@ -74,6 +80,13 @@ public class ClickManager : MonoBehaviour
             }
         }
     }
+
+    private void PlayClickSound() { 
+
+        if (clickSound != null && audioSource != null) { 
+            audioSource.PlayOneShot(clickSound); 
+            } 
+        }
 
     IEnumerator HandleReveal(SpiritRevealController reveal, Color impostorColor)
     {
