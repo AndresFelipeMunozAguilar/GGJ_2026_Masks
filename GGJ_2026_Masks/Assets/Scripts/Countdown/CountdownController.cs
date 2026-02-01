@@ -55,6 +55,8 @@ public class CountdownController : MonoBehaviour
 
         StartCoroutine(gameManager.BlackoutSequence(blackoutHolePosition));
 
+        gameManager.ChangeScene(GameManager.SceneIndex.GameOver);
+
         // Desactivar el spawner y por tanto todos los demás personajes
         spawner.gameObject.SetActive(false);        
 

@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     private float blackoutDuration = 2f;
 
     [SerializeField]
-    private float gameOverAnimationDuration = 2f;
+    private float animationDuration = 2f;
 
     [SerializeField]
     private GameObject blackoutPrefab;
@@ -45,16 +45,17 @@ public class GameManager : MonoBehaviour
         blackoutHole.position = blakcoutHolePosition;
 
         // Sacar por consola que se activo el hueco en el blakcout
-        Debug.Log($"CountdownController: Blackout hole activated. Instantiatied in position {blakcoutHolePosition}. Now waiting {gameOverAnimationDuration} segs for game over animation.");
+        Debug.Log($"CountdownController: Blackout hole activated. Instantiatied in position {blakcoutHolePosition}. Now waiting {animationDuration} segs for game over animation.");
 
         // Indicar que se va a esperar la duracion de la animacion de game over
 
-        Debug.Log($"CountdownController: Waiting for game over animation duration of {gameOverAnimationDuration} seconds.");
+        Debug.Log($"CountdownController: Waiting for game over animation duration of {animationDuration} seconds.");
 
-        yield return new WaitForSeconds(gameOverAnimationDuration);
+        yield return new WaitForSeconds(animationDuration);
 
         Debug.Log("CountdownController: Blackout sequence completed.");
-        ChangeScene(GameManager.SceneIndex.GameOver);
+
+        Destroy(blackout);
     }
 
     private void Awake()
