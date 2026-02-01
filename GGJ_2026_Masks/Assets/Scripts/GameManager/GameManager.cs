@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
         TriggerHumanWhenGameOver = 4,
         Alejandro = 5,
         UpdateCoundown = 6,
+        Tutorial = 7,
+        Win = 8,
     }
 
 

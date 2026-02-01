@@ -13,7 +13,7 @@ public class ButtonsManager : MonoBehaviour
 
     public void PlayTutorial()
     {
-        gameManager.ChangeScene(GameManager.SceneIndex.SampleScene);
+        gameManager.ChangeScene(GameManager.SceneIndex.Tutorial);
     }
 
     public void PlayGame()

@@ -26,6 +26,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/UpdateCountdown.unity
     guid: 2a23c1ac865f7ac47a17834475528755
+  - enabled: 1
+    path: Assets/Scenes/Tutorial.unity
+    guid: 5480caf2147fbbc42bc26a60cf169a3e
+  - enabled: 1
+    path: Assets/Scenes/Win.unity
+    guid: 1c5b8b86f49979c4f825e8c240dfa3f0
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
