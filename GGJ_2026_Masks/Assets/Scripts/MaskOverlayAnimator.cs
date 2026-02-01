@@ -31,19 +31,17 @@ public class MaskOverlayAnimator : MonoBehaviour
         isAnimating = true;
         overlayAnimator.SetTrigger(triggerName);
 
-        // Buscar duración del clip
+        // Esperar la duración del clip
         float length = GetAnimationClipLength(triggerName);
         yield return new WaitForSeconds(length);
 
-        if (triggerName == "MaskOut")
-        {
-            overlayImage.gameObject.SetActive(false);
-        }
+        // Siempre desactivar el overlay al terminar cualquier animación
+        overlayImage.gameObject.SetActive(false);
 
         isAnimating = false;
     }
 
-    float GetAnimationClipLength(string stateName)
+    public float GetAnimationClipLength(string stateName)
     {
         foreach (var clip in overlayAnimator.runtimeAnimatorController.animationClips)
         {
