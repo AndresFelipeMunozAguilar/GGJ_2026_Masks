@@ -44,19 +44,21 @@ public class CountdownController : MonoBehaviour
         Debug.Log("COUNTDOWN SAYS: TIME IS OVER");
         currentTime = maxTime;
 
-
         humanGameOver.TimeIsOver();
 
-        // debug para identificar instancia y posiciones
-        var t = humanGameOver.transform;
-        // Debug.Log($"Human name={humanGameOver.name} scene={humanGameOver.gameObject.scene.name} id={humanGameOver.GetInstanceID()} parent={(t.parent != null ? t.parent.name : "null")}");
-        // Debug.Log($"local={t.localPosition} world={t.position}");
-
-        Vector3 blackoutHolePosition = t.position;
+        // Un vector con una posicion cualquiera
+        Vector3 blackoutHolePosition = new Vector3(0f, 0f, 0f);
 
         StartCoroutine(gameManager.BlackoutSequence(blackoutHolePosition));
 
-        enabled = false;
+        // Desactivar a los hijos del countdown para que no se vea mas
+        foreach (Transform child in transform)
+        {
+            child.gameObject.SetActive(false);
+        }
+
+        // Desactivar este script para evitar múltiples llamadas
+        this.enabled = false;
     }
 
 }

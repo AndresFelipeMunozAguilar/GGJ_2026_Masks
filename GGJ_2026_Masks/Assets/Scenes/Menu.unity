@@ -455,6 +455,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7d37c05f60f4d848ad5e38edd10d9ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  blackoutDuration: 2
+  gameOverAnimationDuration: 2
+  blackoutPrefab: {fileID: 3310375945165879245, guid: 80286a0976820ca46857c55dc8320749, type: 3}
 --- !u!4 &572240778
 Transform:
   m_ObjectHideFlags: 0
