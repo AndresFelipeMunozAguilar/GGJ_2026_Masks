@@ -272,6 +272,10 @@ PrefabInstance:
       value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 7136569846519461262, guid: aab2e2eb00765db4fa696f9c1cb31953, type: 3}
+      propertyPath: spawner
+      value: 
+      objectReference: {fileID: 1007810116}
+    - target: {fileID: 7136569846519461262, guid: aab2e2eb00765db4fa696f9c1cb31953, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
@@ -415,7 +419,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ObjectVisibilityController
   cooldown: 0.5
   overlayAnimator: {fileID: 1157376029}
-  filterAdvanceTime: 0.05
+  filterAdvanceTimeOn: 0.05
+  filterAdvanceTimeOff: 0.05
 --- !u!1 &636528508
 GameObject:
   m_ObjectHideFlags: 0
@@ -846,6 +851,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aacd670f762f2c34f8b9979c5dd45afc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ClickManager
+  overlayAnimator: {fileID: 0}
 --- !u!4 &761201710
 Transform:
   m_ObjectHideFlags: 0
@@ -1171,8 +1177,8 @@ MonoBehaviour:
   prefabTipo3: {fileID: 7167377417486681011, guid: 16828fde0538c2243b36e92fd1d019b0, type: 3}
   numberItems: 10
   impostorCount: 1
-  spawnAreaMin: {x: -20, y: -9}
-  spawnAreaMax: {x: 20, y: 9}
+  spawnAreaMin: {x: -11.6, y: -11.43}
+  spawnAreaMax: {x: 12.4, y: 3.79}
   minDistance: 3
 --- !u!1 &1157376024
 GameObject:
