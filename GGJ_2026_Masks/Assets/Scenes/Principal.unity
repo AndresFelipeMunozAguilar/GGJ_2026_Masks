@@ -585,7 +585,7 @@ MonoBehaviour:
     openSprite: {fileID: -8932950432273405201, guid: 98522c63eca0a0d45b0fecd812878ef5, type: 3}
     hexColor: FF0020
   audioSource: {fileID: 662014258}
-  clipNone: {fileID: 0}
+  clipNone: {fileID: 8300000, guid: 25e364c3910287349a94edf41c1e82dc, type: 3}
   clipTipo1: {fileID: 0}
   clipTipo2: {fileID: 0}
   clipTipo3: {fileID: 0}
