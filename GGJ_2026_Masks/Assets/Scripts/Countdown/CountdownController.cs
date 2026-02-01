@@ -48,15 +48,19 @@ public class CountdownController : MonoBehaviour
         Debug.Log("COUNTDOWN SAYS: TIME IS OVER");
         currentTime = maxTime;
 
-        humanGameOver.TimeIsOver();
-
         // Un vector con una posicion cualquiera
         Vector3 blackoutHolePosition = new Vector3(0f, 0f, 0f);
 
         StartCoroutine(gameManager.BlackoutSequence(blackoutHolePosition));
 
-        gameManager.ChangeScene(GameManager.SceneIndex.GameOver);
+        StartCoroutine(gameManager.FinalBlackoutGameOverSequence());
 
+        // Desactivar el orbe de countdown
+        DisableOrb();
+    }
+
+    public void DisableOrb()
+    {
         // Desactivar el spawner y por tanto todos los demás personajes
         spawner.gameObject.SetActive(false);        
 

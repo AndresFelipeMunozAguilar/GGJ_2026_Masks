@@ -6,8 +6,12 @@ public class ClickManager : MonoBehaviour
 {
     private Camera mainCam;
     public MaskOverlayAnimator overlayAnimator; // para bloquear inputs globales
-    
+
     private bool isBlocked = false;
+
+    private CountdownController countdownController;
+
+    private Movement[] allMovements;
 
     void Awake()
     {
@@ -74,28 +78,26 @@ public class ClickManager : MonoBehaviour
     IEnumerator HandleReveal(SpiritRevealController reveal, Color impostorColor)
     {
         isBlocked = true;
-        // TODO: LLamar a la pantalla negra con el hueco para enfocar al personaje
+        // Desactivar otros personajes mientras se revela este
+        DisableOtherCharacters(reveal.gameObject);
+        // Iniciar el enfoque del personaje
+        yield return FocusCharacter(reveal.transform.position);
 
         reveal.Reveal(impostorColor);
 
-        // esperar hasta que termine la animación de revelado
-        while (!reveal.IsRevealed())
-            yield return null;
-
-        // 👇 No reanudar movimiento del impostor
-        isBlocked = false;
-
-        // TODO Hacer fundido en blanco 
-
-        // Navegar a la escena de victoria
-        GameManager.Instance.ChangeScene(GameManager.SceneIndex.Win);
+        // Lanzar la secuencia de victoria
+        StartCoroutine(GameManager.Instance.FinalWinSequence());
     }
 
     IEnumerator HandleFail(SpiritRevealController reveal, Movement movement)
     {
-        // TODO: LLamar a la pantalla negra con el hueco para enfocar al personaje
-
         isBlocked = true;
+        // Desactivar otros personajes mientras se revela este
+        DisableOtherCharacters(reveal.gameObject);
+        
+        // Iniciar el enfoque del personaje
+        yield return FocusCharacter(reveal.transform.position);
+
         reveal.FailReveal();
 
         // esperar hasta que termine la animación de fallo
@@ -106,5 +108,39 @@ public class ClickManager : MonoBehaviour
         if (movement != null) movement.ResumeMovement();
 
         isBlocked = false;
+        // Reactivar otros personajes
+        EnableOtherCharacters();
+    }
+
+    private IEnumerator FocusCharacter(Vector3 position)
+    {
+        // Iniciar la secuencia de blackout desde el GameManager
+        GameManager gameManager = GameManager.Instance;
+        StartCoroutine(gameManager.BlackoutSequence(position));
+        // Esperar el timeout antes de que se active el hueco
+        yield return new WaitForSeconds(gameManager.blackoutDuration);
+    }
+
+    private void DisableOtherCharacters(GameObject characterToFocus)
+    {
+        // Desactivar todos los personajes excepto el que se está revelando
+        Movement[] allMovements = FindObjectsByType<Movement>(FindObjectsSortMode.None);
+        this.allMovements = allMovements;
+        foreach (var movement in allMovements)
+        {
+            GameObject characterObj = movement.gameObject;
+            // Verificar que no sea el movimiento del personaje que se está revelando
+            if (characterObj == characterToFocus) continue;
+            characterObj.SetActive(false);
+        }
+    }
+
+    private void EnableOtherCharacters()
+    {
+        // Reactivar todos los personajes
+        foreach (var movement in allMovements)
+        {
+            movement.gameObject.SetActive(true);
+        }
     }
 }
