@@ -359,7 +359,7 @@ MonoBehaviour:
   cooldown: 0.5
   overlayAnimator: {fileID: 1157376029}
   filterAdvanceTimeOn: 0.1
-  filterAdvanceTimeOff: 0.0001
+  filterAdvanceTimeOff: -0.1
 --- !u!1 &636528508
 GameObject:
   m_ObjectHideFlags: 0

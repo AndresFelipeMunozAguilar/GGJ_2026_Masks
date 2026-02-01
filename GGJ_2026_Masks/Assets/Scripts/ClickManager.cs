@@ -6,7 +6,7 @@ public class ClickManager : MonoBehaviour
 {
     private Camera mainCam;
     public MaskOverlayAnimator overlayAnimator; // para bloquear inputs globales
-
+    
     private bool isBlocked = false;
 
     void Awake()
@@ -30,6 +30,9 @@ public class ClickManager : MonoBehaviour
 
             if (hit.collider != null)
             {
+                var movement = hit.collider.GetComponent<Movement>();
+                if (movement == null) movement = hit.collider.GetComponentInParent<Movement>();
+
                 ObjectByType obj = hit.collider.GetComponent<ObjectByType>();
                 if (obj != null)
                 {
@@ -39,7 +42,9 @@ public class ClickManager : MonoBehaviour
 
                     if (obj.isImpostor)
                     {
-                        Debug.Log("HUMANO IMPOSTOR AAAAA");
+                        // Impostor → pausar movimiento y NO reanudar
+                        if (movement != null) movement.PauseMovement();
+                        Debug.Log("¡Humano impostor encontrado!");
 
                         if (reveal != null && !reveal.IsRevealed())
                         {
@@ -52,10 +57,13 @@ public class ClickManager : MonoBehaviour
                     }
                     else
                     {
-                        Debug.Log("Espíritu normal");
+                        // Espíritu normal → pausar movimiento mientras dura la animación y luego reanudar
+                        Debug.Log("Espíritu normal tocado");
+                        if (movement != null) movement.PauseMovement();
+
                         if (reveal != null && !reveal.IsFailing())
                         {
-                            StartCoroutine(HandleFail(reveal));
+                            StartCoroutine(HandleFail(reveal, movement));
                         }
                     }
                 }
@@ -69,13 +77,16 @@ public class ClickManager : MonoBehaviour
         reveal.Reveal(impostorColor);
 
         // esperar hasta que termine la animación de revelado
-        while (reveal.IsRevealed() == false)
+        while (!reveal.IsRevealed())
             yield return null;
 
+        // 👇 No reanudar movimiento del impostor
         isBlocked = false;
+
+        // aquí puedes poner tu lógica de cambio de escena
     }
 
-    IEnumerator HandleFail(SpiritRevealController reveal)
+    IEnumerator HandleFail(SpiritRevealController reveal, Movement movement)
     {
         isBlocked = true;
         reveal.FailReveal();
@@ -83,6 +94,9 @@ public class ClickManager : MonoBehaviour
         // esperar hasta que termine la animación de fallo
         while (reveal.IsFailing())
             yield return null;
+
+        // 👇 Reanudar movimiento del espíritu normal
+        if (movement != null) movement.ResumeMovement();
 
         isBlocked = false;
     }

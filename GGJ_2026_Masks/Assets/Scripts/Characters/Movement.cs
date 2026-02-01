@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-
     public enum MovementType
     {
         Horizontal,
@@ -20,8 +19,10 @@ public class Movement : MonoBehaviour
     private float radius = 3f;
 
     private float angle = 0f;
-
     private Vector3 startPosition;
+
+    // Nuevo flag para pausar/reanudar
+    public bool isPaused = false;
 
     public void Start()
     {
@@ -31,6 +32,8 @@ public class Movement : MonoBehaviour
 
     public void Update()
     {
+        if (isPaused) return; // si está pausado, no mover
+
         switch (movementType)
         {
             case MovementType.Horizontal:
@@ -83,4 +86,7 @@ public class Movement : MonoBehaviour
         movementType = (MovementType)randomIndex;
     }
 
+    // Métodos públicos para pausar/reanudar
+    public void PauseMovement() => isPaused = true;
+    public void ResumeMovement() => isPaused = false;
 }
