@@ -516,9 +516,9 @@ MonoBehaviour:
   imagenPanel: {fileID: 844544733}
   botonCambio: {fileID: 1496252231}
   listaSprites:
-  - {fileID: 6693839668131001086, guid: b4edf295b64cf6f41838eaa9d1118366, type: 3}
-  - {fileID: 1770673188495041672, guid: 87781e7c8d4490b4c8c92f034e3ad8b2, type: 3}
-  - {fileID: 3167146226413406439, guid: db3256a14ce80cd4d85bf13b223c39e3, type: 3}
+  - {fileID: 8976443670276429332, guid: 5570dd2ea29859241a4d76842ff92637, type: 3}
+  - {fileID: 5163708935038567697, guid: 198f20081d849204f84d4ef84ec8470a, type: 3}
+  - {fileID: -7506835128047884438, guid: 4d2d8cabd38ed224f9ec4c1c37c3597b, type: 3}
   tiempoEntreCambios: 5
   buttonsManager: {fileID: 844544735}
 --- !u!114 &844544733
@@ -541,7 +541,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 6693839668131001086, guid: b4edf295b64cf6f41838eaa9d1118366, type: 3}
+  m_Sprite: {fileID: 8976443670276429332, guid: 5570dd2ea29859241a4d76842ff92637, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -707,6 +707,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   blackoutDuration: 4
   animationDuration: 2
+  isAnimationPlaying: 0
   blackoutPrefab: {fileID: 3310375945165879245, guid: 80286a0976820ca46857c55dc8320749, type: 3}
 --- !u!4 &1381598372
 Transform:
