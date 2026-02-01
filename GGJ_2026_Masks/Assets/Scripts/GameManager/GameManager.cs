@@ -66,8 +66,12 @@ public class GameManager : MonoBehaviour
         while (isAnimationPlaying)
         {
             // Esperar medio segundo antes de comprobar de nuevo
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.75f);
         }
+
+        // Desactivar el orbe
+        CountdownController countdownController = FindFirstObjectByType<CountdownController>();
+        countdownController.DisableOrb();
 
         FindFirstObjectByType<FadeInImagesGroup>().FadeIn();
 
@@ -80,9 +84,10 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator FinalWinSequence()
     {
-        isAnimationPlaying = true;
         // Esta función se llama justo después del blackout y de haber esperado el fundido en negro, se espera la animación
         yield return new WaitForSeconds(animationDuration);
+
+        isAnimationPlaying = true;
 
         // Desactivar el orbe
         CountdownController countdownController = FindFirstObjectByType<CountdownController>();
