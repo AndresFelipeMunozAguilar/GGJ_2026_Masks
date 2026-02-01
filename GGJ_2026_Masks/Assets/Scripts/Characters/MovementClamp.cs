@@ -3,9 +3,13 @@ using UnityEngine;
 public class MovementClamp : MonoBehaviour
 {
 
-    [Header("Límites de Movimiento")]
+    [Header("Límites de Movimiento Externos")]
     public Vector2 minBounds = new Vector2(-10f, -10f);
     public Vector2 maxBounds = new Vector2(10f, 10f);
+
+    [Header("Límites de Movimiento Internos Excluidos")]
+    public Vector2 innerExcludedBoundsMin = new Vector2(-3f, -4f);
+    public Vector2 innerExcludedBoundsMax = new Vector2(3f, 2f);
 
     void LateUpdate()
     {
@@ -21,14 +25,13 @@ public class MovementClamp : MonoBehaviour
 
         // Funcion para clampear la posicion y que excluya los valores entre (-1, 1) en X
         // y (-1, 1) en Y
-        if (currentPos.x > -1f && currentPos.x < 1f)
+        if ((currentPos.x > innerExcludedBoundsMin.x && currentPos.x < innerExcludedBoundsMax.x)
+            && (currentPos.y > innerExcludedBoundsMin.y && currentPos.y < innerExcludedBoundsMax.y))
         {
-            clampedX = currentPos.x < 0 ? -1f : 1f;
+            clampedX = currentPos.x < 0 ? innerExcludedBoundsMin.x : innerExcludedBoundsMax.x;
+            clampedY = currentPos.y < 0 ? innerExcludedBoundsMin.y : innerExcludedBoundsMax.y;
         }
-        if (currentPos.y > -1f && currentPos.y < 1f)
-        {
-            clampedY = currentPos.y < 0 ? -1f : 1f;
-        }
+
         transform.position = new Vector3(clampedX, clampedY, currentPos.z);
     }
 
