@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8286546369957991656}
   - component: {fileID: 814205465670556384}
-  - component: {fileID: 9147295263951280916}
   - component: {fileID: 7909853330463850980}
+  - component: {fileID: 7593536633595374732}
   - component: {fileID: 1056785129393574358}
   m_Layer: 0
   m_Name: Human
@@ -94,21 +94,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &9147295263951280916
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7778716936714630562}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcfdfc5c9f869654ba58734ac92fadca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Movement
-  movementType: 0
-  speed: 2
-  radius: 1
 --- !u!114 &7909853330463850980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,9 +107,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HumanGameOver
   spiritGem: {fileID: 0}
-  humanMovement: {fileID: 9147295263951280916}
-  radius: 2
-  angle: 60
+  humanMovement: {fileID: 7593536633595374732}
+  radius: 1.5
+  angle: 90
+--- !u!114 &7593536633595374732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7778716936714630562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b72131cf71492b242ba9de8c94ba1d51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Movement
+  movementType: 0
+  speed: 2.2
+  radius: 1.7
 --- !u!61 &1056785129393574358
 BoxCollider2D:
   m_ObjectHideFlags: 0
