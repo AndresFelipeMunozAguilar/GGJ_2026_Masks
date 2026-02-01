@@ -359,7 +359,7 @@ MonoBehaviour:
   cooldown: 0.5
   overlayAnimator: {fileID: 1157376029}
   filterAdvanceTimeOn: 0.1
-  filterAdvanceTimeOff: 0.1
+  filterAdvanceTimeOff: 0.0001
 --- !u!1 &636528508
 GameObject:
   m_ObjectHideFlags: 0
@@ -1060,12 +1060,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1927314608}
+  m_Father: {fileID: 1396973631}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 674.9999, y: 449.893}
-  m_SizeDelta: {x: 1859.9999, y: 1009.786}
+  m_AnchoredPosition: {x: -0.00012207031, y: -0.29986572}
+  m_SizeDelta: {x: -0.00024414062, y: -0.5998535}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1157376026
 Animator:
@@ -1314,6 +1314,7 @@ RectTransform:
   - {fileID: 673167840}
   - {fileID: 636528509}
   - {fileID: 1927314608}
+  - {fileID: 1157376025}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1351,8 +1352,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1157376025}
+  m_Children: []
   m_Father: {fileID: 1396973631}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

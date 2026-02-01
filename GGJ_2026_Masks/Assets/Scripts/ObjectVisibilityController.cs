@@ -15,6 +15,9 @@ public class ObjectVisibilityController : MonoBehaviour
     [Header("Tiempo de adelanto para aplicar filtro al quitar máscara")]
     public float filterAdvanceTimeOff = 0.05f;  
 
+    // Nuevo: guardar el último color de máscara
+    private Color lastMaskColor = Color.white;
+
     void Update()
     {
         if (Keyboard.current == null) return;
@@ -43,7 +46,8 @@ public class ObjectVisibilityController : MonoBehaviour
             if (!string.IsNullOrEmpty(currentFilter)) 
             { 
                 lastChangeTime = Time.time;
-                overlayAnimator.PlayMaskReverse();
+                // Usar el último color guardado
+                overlayAnimator.ToggleMask(lastMaskColor);
                 StartCoroutine(RemoveMaskWithAnimation());
             } 
         }
@@ -51,8 +55,10 @@ public class ObjectVisibilityController : MonoBehaviour
 
     IEnumerator ApplyFilterWithAnimation(string tipo, Color maskColor)
     {
-        overlayAnimator.PlayMask(maskColor);
+        // Guardar el color para usarlo al quitar la máscara
+        lastMaskColor = maskColor;
 
+        overlayAnimator.ToggleMask(maskColor);
         float length = overlayAnimator.GetAnimationClipLength("MaskInState");
         yield return new WaitForSeconds(Mathf.Max(0, length - filterAdvanceTimeOn));
 
@@ -61,9 +67,8 @@ public class ObjectVisibilityController : MonoBehaviour
 
     IEnumerator RemoveMaskWithAnimation()
     {
-        
         float length = overlayAnimator.GetAnimationClipLength("MaskOutState");
-        yield return(null);
+        yield return new WaitForSeconds(Mathf.Max(0, length - filterAdvanceTimeOff));
         ShowAll();
     }
 
