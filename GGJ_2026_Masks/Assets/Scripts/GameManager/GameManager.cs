@@ -2,16 +2,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
 using System;
-using NUnit.Framework;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
     public float blackoutDuration = 2f;
-
     public float animationDuration = 2f;
-
     public Boolean isAnimationPlaying = false;
 
     [SerializeField]
@@ -28,6 +25,7 @@ public class GameManager : MonoBehaviour
         UpdateCoundown = 6,
         Tutorial = 7,
         Win = 8,
+        Nivel2 = 9  
     }
 
     public IEnumerator BlackoutSequence(Vector3 blakcoutHolePosition)
@@ -37,19 +35,13 @@ public class GameManager : MonoBehaviour
         Transform blackoutHole = blackout.transform.GetChild(0);
         isAnimationPlaying = true;
 
-        //Sacar por consola que se va a iniciar el blackout
         Debug.Log($"CountdownController: Blackout iniciado y va a esperar {blackoutDuration} segs.");
         yield return new WaitForSeconds(blackoutDuration);
 
         blackoutHole.gameObject.SetActive(true);
-
         blackoutHole.position = blakcoutHolePosition;
 
-        // Sacar por consola que se activo el hueco en el blakcout
-        Debug.Log($"CountdownController: Blackout hole activated. Instantiatied in position {blakcoutHolePosition}. Now waiting {animationDuration} segs for game over animation.");
-
-        // Indicar que se va a esperar la duracion de la animacion de game over
-
+        Debug.Log($"CountdownController: Blackout hole activated. Instantiated in position {blakcoutHolePosition}. Now waiting {animationDuration} segs for game over animation.");
         Debug.Log($"CountdownController: Waiting for game over animation duration of {animationDuration} seconds.");
 
         yield return new WaitForSeconds(animationDuration);
@@ -62,47 +54,51 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator FinalBlackoutGameOverSequence()
     {
-        // Si ya hay otra animación en curso, esperar a que termine
         while (isAnimationPlaying)
         {
-            // Esperar medio segundo antes de comprobar de nuevo
             yield return new WaitForSeconds(0.75f);
         }
 
-        // Desactivar el orbe
         CountdownController countdownController = FindFirstObjectByType<CountdownController>();
         countdownController.DisableOrb();
 
         FindFirstObjectByType<FadeInImagesGroup>().FadeIn();
 
-        // Esperar la duración del backout y la animación
         yield return new WaitForSeconds(blackoutDuration + animationDuration);
 
-        // Cambiar a la pantalla de Game Over
         ChangeScene(SceneIndex.GameOver);
     }
 
     public IEnumerator FinalWinSequence()
     {
-        // Esta función se llama justo después del blackout y de haber esperado el fundido en negro, se espera la animación
         yield return new WaitForSeconds(animationDuration);
 
         isAnimationPlaying = true;
 
-        // Desactivar el orbe
         CountdownController countdownController = FindFirstObjectByType<CountdownController>();
         countdownController.DisableOrb();
 
-        // Instanciar el prefab de blackout y cambiarle el color a blanco
         GameObject blackout = Instantiate(blackoutPrefab);
         SpriteRenderer sr = blackout.GetComponent<SpriteRenderer>();
         sr.color = Color.white;
 
-        // Esperar un segundo
         yield return new WaitForSeconds(1f);
 
-        // Cambiar a la pantalla de victoria
-        ChangeScene(SceneIndex.Win);
+        // 👇 lógica nueva: decidir si ir a Nivel2 o a Win
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        if (currentSceneName == "Principal")
+        {
+            ChangeScene(SceneIndex.Nivel2);
+        }
+        else if (currentSceneName == "Nivel2")
+        {
+            ChangeScene(SceneIndex.Win);
+        }
+        else
+        {
+            // fallback: por defecto ir a Win
+            ChangeScene(SceneIndex.Win);
+        }
     }
 
     private void Awake()
@@ -122,5 +118,4 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene((int)sceneIndex);
     }
-
 }

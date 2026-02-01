@@ -518,7 +518,7 @@ MonoBehaviour:
   listaSprites:
   - {fileID: 8976443670276429332, guid: 5570dd2ea29859241a4d76842ff92637, type: 3}
   - {fileID: 5163708935038567697, guid: 198f20081d849204f84d4ef84ec8470a, type: 3}
-  - {fileID: -7506835128047884438, guid: 4d2d8cabd38ed224f9ec4c1c37c3597b, type: 3}
+  - {fileID: -3287120011643120583, guid: 263a3f70c0dc7c647b972701bd365251, type: 3}
   tiempoEntreCambios: 5
   buttonsManager: {fileID: 844544735}
 --- !u!114 &844544733
