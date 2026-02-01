@@ -16,7 +16,7 @@ public class HumanGameOver : MonoBehaviour
 
     public void TimeIsOver()
     {
-        Debug.Log("HumanGameOver: Time is over. Triggering game over sequence.");
+        // Debug.Log("HumanGameOver: Time is over. Triggering game over sequence.");
 
         // Desactivar el script de movimiento ciclico
         humanMovement.enabled = false;

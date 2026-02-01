@@ -35,15 +35,12 @@ public class GameManager : MonoBehaviour
 
         blackoutHole.gameObject.SetActive(true);
         // convertir la posición world del humano a local respecto al padre del agujero
-        Vector3 localPos = (blackoutHole.parent != null)
-            ? blackoutHole.parent.InverseTransformPoint(blakcoutHolePosition)
-            : blackout.transform.InverseTransformPoint(blakcoutHolePosition);
 
-        blackoutHole.localPosition = localPos;
+        blackoutHole.position = blakcoutHolePosition;
 
 
-        Debug.Log("La posicion del global del agujero es: " + blackoutHole.position);
-        Debug.Log("La posicion del local del agujero  es: " + blackoutHole.localPosition);
+        // Debug.Log("La posicion del global del agujero es: " + blackoutHole.position);
+        // Debug.Log("La posicion del local del agujero  es: " + blackoutHole.localPosition);
 
         yield return new WaitForSeconds(gameOverAnimationDuration);
 

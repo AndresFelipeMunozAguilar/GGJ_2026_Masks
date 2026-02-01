@@ -49,8 +49,8 @@ public class CountdownController : MonoBehaviour
 
         // debug para identificar instancia y posiciones
         var t = humanGameOver.transform;
-        Debug.Log($"Human name={humanGameOver.name} scene={humanGameOver.gameObject.scene.name} id={humanGameOver.GetInstanceID()} parent={(t.parent != null ? t.parent.name : "null")}");
-        Debug.Log($"local={t.localPosition} world={t.position}");
+        // Debug.Log($"Human name={humanGameOver.name} scene={humanGameOver.gameObject.scene.name} id={humanGameOver.GetInstanceID()} parent={(t.parent != null ? t.parent.name : "null")}");
+        // Debug.Log($"local={t.localPosition} world={t.position}");
 
         Vector3 blackoutHolePosition = t.position;
 
