@@ -18,6 +18,18 @@ public class MovementClamp : MonoBehaviour
 
         // Aplicamos la posición final (manteniendo la Z original)
         transform.position = new Vector3(clampedX, clampedY, currentPos.z);
+
+        // Funcion para clampear la posicion y que excluya los valores entre (-1, 1) en X
+        // y (-1, 1) en Y
+        if (currentPos.x > -1f && currentPos.x < 1f)
+        {
+            clampedX = currentPos.x < 0 ? -1f : 1f;
+        }
+        if (currentPos.y > -1f && currentPos.y < 1f)
+        {
+            clampedY = currentPos.y < 0 ? -1f : 1f;
+        }
+        transform.position = new Vector3(clampedX, clampedY, currentPos.z);
     }
 
 }
