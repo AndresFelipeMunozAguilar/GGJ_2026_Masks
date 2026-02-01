@@ -22,6 +22,7 @@ public class ClickManager : MonoBehaviour
 
         if (Mouse.current.leftButton.wasPressedThisFrame)
         {
+            Debug.Log("Click detectado");
             Vector2 mousePos = Mouse.current.position.ReadValue();
             Ray ray = mainCam.ScreenPointToRay(mousePos);
 
@@ -36,9 +37,9 @@ public class ClickManager : MonoBehaviour
                     if (reveal == null)
                         reveal = hit.collider.GetComponentInParent<SpiritRevealController>();
 
-                    if (obj.tipo == "")
+                    if (obj.isImpostor)
                     {
-                        Debug.Log("¡Encontraste un humano impostor!");
+                        Debug.Log("HUMANO IMPOSTOR AAAAA");
 
                         if (reveal != null && !reveal.IsRevealed())
                         {
@@ -51,7 +52,7 @@ public class ClickManager : MonoBehaviour
                     }
                     else
                     {
-                        Debug.Log("¡Error! Tocaste un espíritu normal, pierdes tiempo...");
+                        Debug.Log("Espíritu normal");
                         if (reveal != null && !reveal.IsFailing())
                         {
                             StartCoroutine(HandleFail(reveal));
