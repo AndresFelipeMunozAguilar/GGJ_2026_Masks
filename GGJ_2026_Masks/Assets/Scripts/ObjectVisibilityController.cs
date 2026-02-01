@@ -10,8 +10,10 @@ public class ObjectVisibilityController : MonoBehaviour
     
     public MaskOverlayAnimator overlayAnimator;
 
-    [Header("Tiempo de adelanto para aplicar filtro (segundos)")]
-    public float filterAdvanceTime = 0.05f; 
+    [Header("Tiempo de adelanto para aplicar filtro al poner máscara")]
+    public float filterAdvanceTimeOn = 0.05f;
+    [Header("Tiempo de adelanto para aplicar filtro al quitar máscara")]
+    public float filterAdvanceTimeOff = 0.05f;  
 
     void Update()
     {
@@ -41,6 +43,7 @@ public class ObjectVisibilityController : MonoBehaviour
             if (!string.IsNullOrEmpty(currentFilter)) 
             { 
                 lastChangeTime = Time.time;
+                overlayAnimator.PlayMaskReverse();
                 StartCoroutine(RemoveMaskWithAnimation());
             } 
         }
@@ -51,18 +54,16 @@ public class ObjectVisibilityController : MonoBehaviour
         overlayAnimator.PlayMask(maskColor);
 
         float length = overlayAnimator.GetAnimationClipLength("MaskInState");
-        yield return new WaitForSeconds(Mathf.Max(0, length - filterAdvanceTime));
+        yield return new WaitForSeconds(Mathf.Max(0, length - filterAdvanceTimeOn));
 
         ToggleFilter(tipo);
     }
 
     IEnumerator RemoveMaskWithAnimation()
     {
-        overlayAnimator.PlayMaskReverse();
-
+        
         float length = overlayAnimator.GetAnimationClipLength("MaskOutState");
-        yield return new WaitForSeconds(Mathf.Max(0, length - filterAdvanceTime));
-
+        yield return(null);
         ShowAll();
     }
 

@@ -458,7 +458,34 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 31064efa5e7130148aa4e1458a0cadb7, type: 3}
   - {fileID: 21300000, guid: c6d1a6bbd568b5d46b69e5259fc6fff5, type: 3}
   - {fileID: 21300000, guid: a64bd619c48009e45a7a883918d66947, type: 3}
+  failFrames:
+  - {fileID: 21300000, guid: 693f1327060d4d342a0b02d478c87938, type: 3}
+  - {fileID: 21300000, guid: c12a99cae02399647be784f71b04063c, type: 3}
+  - {fileID: 21300000, guid: b3d104db94ab7654e9bfee7b8c3926e9, type: 3}
+  - {fileID: 21300000, guid: 62b8dd88dd98e5f49b1f859ae483e3e7, type: 3}
+  - {fileID: 21300000, guid: 8ace77b8cd6ce914fa4539a267ecf3a3, type: 3}
+  - {fileID: 21300000, guid: 9ee850acea9c2b044af8519fc697f144, type: 3}
+  - {fileID: 21300000, guid: 61fd88b8c23d3ab41822b1093bc2f98b, type: 3}
+  - {fileID: 21300000, guid: a7b607ba46e0f4041acfe4a2d7fc5135, type: 3}
+  - {fileID: 21300000, guid: cf416be12e95e20408cdd0a99628a741, type: 3}
+  - {fileID: 21300000, guid: b1011f5b97719fc499d1b2900d10a801, type: 3}
+  - {fileID: 21300000, guid: d688e871f398c0149b9271a0daa9d0f4, type: 3}
+  - {fileID: 21300000, guid: 325aee79ec7c2944a8ccce644df25cc3, type: 3}
+  - {fileID: 21300000, guid: 6cc8447e75b5a154c9605f085ac113f1, type: 3}
+  - {fileID: 21300000, guid: b86e98c03547e0e45ac8f8fba2906b56, type: 3}
+  - {fileID: 21300000, guid: 5850b67f16fed98439dae46b45d3975c, type: 3}
+  - {fileID: 21300000, guid: e8b29bddb892c694f93ba99f6353b1ff, type: 3}
+  - {fileID: 21300000, guid: 231b3d529e60a7d4e9fca02601daa8a8, type: 3}
+  - {fileID: 21300000, guid: 730bc613896a2aa44b2e375f0e715b84, type: 3}
+  - {fileID: 21300000, guid: 1262d87016e75074d99586b927913fa8, type: 3}
+  - {fileID: 21300000, guid: 44f5da2236302ab49b711586687982d5, type: 3}
+  - {fileID: 21300000, guid: dc61109ad968ff24aa838aaafbcc05c4, type: 3}
+  - {fileID: 21300000, guid: 3d5d087bfcd82704ab3e3c861253285f, type: 3}
+  - {fileID: 21300000, guid: 48d37b31e8e0e8348a895aabe6e0c502, type: 3}
+  - {fileID: 21300000, guid: 9f0adf21b71f24d46a94de2e694e5711, type: 3}
+  - {fileID: 21300000, guid: a04df0d40a76fa64ea4f63d37ed6ecf3, type: 3}
   revealFps: 12
+  failFps: 12
 --- !u!1 &8281164949737984792
 GameObject:
   m_ObjectHideFlags: 0
