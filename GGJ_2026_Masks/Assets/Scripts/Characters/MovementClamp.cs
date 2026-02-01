@@ -28,8 +28,18 @@ public class MovementClamp : MonoBehaviour
         if ((currentPos.x > innerExcludedBoundsMin.x && currentPos.x < innerExcludedBoundsMax.x)
             && (currentPos.y > innerExcludedBoundsMin.y && currentPos.y < innerExcludedBoundsMax.y))
         {
-            clampedX = currentPos.x < 0 ? innerExcludedBoundsMin.x : innerExcludedBoundsMax.x;
-            clampedY = currentPos.y < 0 ? innerExcludedBoundsMin.y : innerExcludedBoundsMax.y;
+            // Mover la posición del objeto fuera del área exluida, mediante
+            // moverlo lentamente hacia afuera, en la misma direccion
+            // que el vector que apunta desde este objeto hasta el centro del área excluida (0,0)
+            Vector3 direction = new Vector3(
+                currentPos.x > 0 ? 1 : -1,
+                currentPos.y > 0 ? 1 : -1,
+                0).normalized;
+            float moveSpeed = 5f * Time.deltaTime;
+            currentPos += direction * moveSpeed;
+            clampedX = Mathf.Clamp(currentPos.x, minBounds.x, maxBounds.x);
+            clampedY = Mathf.Clamp(currentPos.y, minBounds.y, maxBounds.y);
+
         }
 
         transform.position = new Vector3(clampedX, clampedY, currentPos.z);
