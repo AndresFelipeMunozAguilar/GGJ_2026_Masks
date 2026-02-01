@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 public class ObjectVisibilityController : MonoBehaviour
 {
@@ -9,42 +10,60 @@ public class ObjectVisibilityController : MonoBehaviour
     
     public MaskOverlayAnimator overlayAnimator;
 
+    [Header("Tiempo de adelanto para aplicar filtro (segundos)")]
+    public float filterAdvanceTime = 0.05f; 
+
     void Update()
     {
-        if (overlayAnimator != null && overlayAnimator.IsAnimating()) return;
-        
         if (Keyboard.current == null) return;
-
-       
         if (Time.time - lastChangeTime < cooldown) return;
 
         if (Keyboard.current.qKey.wasPressedThisFrame)
         {
-            ToggleFilter("Tipo1");
             lastChangeTime = Time.time;
-            overlayAnimator.PlayMask(HexToColor("FFF700"));
+            StartCoroutine(ApplyFilterWithAnimation("Tipo1", HexToColor("FFF700")));
         }
 
         if (Keyboard.current.wKey.wasPressedThisFrame)
         {
-            ToggleFilter("Tipo2");
             lastChangeTime = Time.time;
-            overlayAnimator.PlayMask(HexToColor("00FFFC"));
+            StartCoroutine(ApplyFilterWithAnimation("Tipo2", HexToColor("00FFFC")));
         }
 
         if (Keyboard.current.eKey.wasPressedThisFrame)
         {
-            ToggleFilter("Tipo3");
             lastChangeTime = Time.time;
-            overlayAnimator.PlayMask(HexToColor("FF0020"));
+            StartCoroutine(ApplyFilterWithAnimation("Tipo3", HexToColor("FF0020")));
         }
 
-        if (Keyboard.current.spaceKey.wasPressedThisFrame)
-        {
-            ShowAll();
-            lastChangeTime = Time.time;
-            overlayAnimator.PlayMaskReverse();
+        if (Keyboard.current.spaceKey.wasPressedThisFrame) 
+        { 
+            if (!string.IsNullOrEmpty(currentFilter)) 
+            { 
+                lastChangeTime = Time.time;
+                StartCoroutine(RemoveMaskWithAnimation());
+            } 
         }
+    }
+
+    IEnumerator ApplyFilterWithAnimation(string tipo, Color maskColor)
+    {
+        overlayAnimator.PlayMask(maskColor);
+
+        float length = overlayAnimator.GetAnimationClipLength("MaskInState");
+        yield return new WaitForSeconds(Mathf.Max(0, length - filterAdvanceTime));
+
+        ToggleFilter(tipo);
+    }
+
+    IEnumerator RemoveMaskWithAnimation()
+    {
+        overlayAnimator.PlayMaskReverse();
+
+        float length = overlayAnimator.GetAnimationClipLength("MaskOutState");
+        yield return new WaitForSeconds(Mathf.Max(0, length - filterAdvanceTime));
+
+        ShowAll();
     }
 
     void ToggleFilter(string tipo)
@@ -65,6 +84,7 @@ public class ObjectVisibilityController : MonoBehaviour
         EventManager.OnFilterChanged.Invoke("ALL");
         currentFilter = "";
     }
+
     Color HexToColor(string hex)
     {
         if (ColorUtility.TryParseHtmlString("#" + hex, out Color color))
