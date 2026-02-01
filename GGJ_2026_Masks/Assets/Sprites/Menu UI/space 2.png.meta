@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: b646620b9d6316e4ba920a3f6cb9b931
+guid: fe437d95f78322b4dbdc3cb9f348d10b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5202923663076500943
-    second: Salir 1_0
-  - first:
-      213: 8047528730650849091
-    second: Salir 1_1
+      213: 5149465435342527007
+    second: space 2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -103,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Salir 1_0
+      name: space 2_0
       rect:
         serializedVersion: 2
-        x: 8
-        y: 32
-        width: 692
-        height: 318
+        x: 43
+        y: 45
+        width: 653
+        height: 210
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -118,30 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fc5262b518f743840800000000000000
-      internalID: 5202923663076500943
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Salir 1_1
-      rect:
-        serializedVersion: 2
-        x: 701
-        y: 223
-        width: 7
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 34fa13e2eb09eaf60800000000000000
-      internalID: 8047528730650849091
+      spriteID: f1a5eb8c783967740800000000000000
+      internalID: 5149465435342527007
       vertices: []
       indices: 
       edges: []
@@ -160,8 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Salir 1_0: 5202923663076500943
-      Salir 1_1: 8047528730650849091
+      space 2_0: 5149465435342527007
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
