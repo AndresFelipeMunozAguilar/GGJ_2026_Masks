@@ -62,10 +62,16 @@ public class Movement : MonoBehaviour
 
     public void MoveCircular()
     {
+        // angle += speed * Time.deltaTime;
+        // float x = startPosition.x + Mathf.Cos(angle) * radius;
+        // float y = startPosition.y + Mathf.Sin(angle) * radius;
+        // transform.position = new Vector3(x, y, transform.position.z);
+
         angle += speed * Time.deltaTime;
-        float x = startPosition.x + Mathf.Cos(angle) * radius;
-        float y = startPosition.y + Mathf.Sin(angle) * radius;
-        transform.position = new Vector3(x, y, transform.position.z);
+        float x = Mathf.Cos(angle) * speed * Time.deltaTime;
+        float y = Mathf.Sin(angle) * speed * Time.deltaTime;
+        transform.position += new Vector3(x, y, 0);
+
     }
 
     public void SetMovementType(int type)
