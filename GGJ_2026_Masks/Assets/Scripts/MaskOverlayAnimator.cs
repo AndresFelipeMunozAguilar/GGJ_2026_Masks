@@ -10,17 +10,18 @@ public class MaskOverlayAnimator : MonoBehaviour
     private bool isAnimating = false;
     private bool maskActive = false;
     private Color currentColor = Color.black;
+    private string currentMaskTipo = ""; // nuevo: guardar tipo actual
 
-    public void ToggleMask(Color maskColor)
+    public void ToggleMask(Color maskColor, string tipo)
     {
         if (isAnimating) return;
 
         if (!maskActive)
         {
-            // Poner máscara
+            // No hay máscara → poner nueva
             currentColor = maskColor;
+            currentMaskTipo = tipo;
 
-            // Importante: no mostrar el overlay sólido de inmediato
             overlayImage.color = maskColor;
             overlayImage.gameObject.SetActive(true);
 
@@ -28,11 +29,25 @@ public class MaskOverlayAnimator : MonoBehaviour
         }
         else
         {
-            // Quitar máscara
-            overlayImage.color = currentColor;
-            overlayImage.gameObject.SetActive(true);
+            if (currentMaskTipo == tipo)
+            {
+                // Misma máscara → quitar
+                overlayImage.color = currentColor;
+                overlayImage.gameObject.SetActive(true);
 
-            StartCoroutine(PlayAnimation("MaskOut", false));
+                StartCoroutine(PlayAnimation("MaskOut", false));
+            }
+            else
+            {
+                // Otra máscara distinta → cambiar directamente con MaskIn
+                currentColor = maskColor;
+                currentMaskTipo = tipo;
+
+                overlayImage.color = maskColor;
+                overlayImage.gameObject.SetActive(true);
+
+                StartCoroutine(PlayAnimation("MaskIn", true));
+            }
         }
     }
 
@@ -49,21 +64,18 @@ public class MaskOverlayAnimator : MonoBehaviour
 
         if (activating)
         {
-            // Al terminar MaskIn → marcar que hay máscara activa
             maskActive = true;
-            // Desactivar el overlay para que no quede pintando la pantalla
             overlayImage.gameObject.SetActive(false);
         }
         else
         {
-            // Al terminar MaskOut → máscara desactivada
             maskActive = false;
+            currentMaskTipo = "";
             overlayImage.gameObject.SetActive(false);
         }
 
         isAnimating = false;
     }
-
 
     public float GetAnimationClipLength(string stateName)
     {
@@ -77,4 +89,5 @@ public class MaskOverlayAnimator : MonoBehaviour
 
     public bool IsAnimating() => isAnimating;
     public bool IsMaskActive() => maskActive;
+    public string CurrentMaskTipo() => currentMaskTipo;
 }
