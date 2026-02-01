@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: c291c513884306d45a4d0b39eeed87a4
+guid: e682d8458c7cb2149ab8f5e9a6e85462
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5720517301130036245
-    second: reiniciar_1_0
+      213: 6893167096713241109
+    second: GameOverMenu_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: reiniciar_1_0
+      name: GameOverMenu_0
       rect:
         serializedVersion: 2
-        x: 8
-        y: 34
-        width: 665
-        height: 266
+        x: 0
+        y: 0
+        width: 1920
+        height: 1080
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 51405514d2c536f40800000000000000
-      internalID: 5720517301130036245
+      spriteID: 512e001f3f279af50800000000000000
+      internalID: 6893167096713241109
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      reiniciar_1_0: 5720517301130036245
+      GameOverMenu_0: 6893167096713241109
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
