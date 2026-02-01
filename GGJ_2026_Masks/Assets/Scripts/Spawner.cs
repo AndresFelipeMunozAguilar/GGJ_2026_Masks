@@ -51,20 +51,24 @@ public class Spawner : MonoBehaviour
             if (impostorIndices.Contains(i))
             {
                 ob.tipo = "Impostor";
+                ob.isImpostor = true;
                 int tipoImpostor = Random.Range(1,4);
                 switch (tipoImpostor)
                 {
                 case 1:
                     ob.tipo = "";
                     sr.color = HexToColor("FFF700");
+                    ob.impostorColor = HexToColor("FFF700");
                     break;
                 case 2:
                     ob.tipo = "";
                     sr.color = HexToColor("00FFFC");
+                    ob.impostorColor = HexToColor("00FFFC");
                     break;
                 case 3:
                     ob.tipo = "";
                     sr.color = HexToColor("FF0020");
+                    ob.impostorColor = HexToColor("FF0020");
                     break; 
                 }
             }
@@ -136,10 +140,6 @@ public class Spawner : MonoBehaviour
         return Color.white;
     }
 
-    Color GetRandomColor()
-    {
-        return Color.HSVToRGB(Random.value, 0.9f, 1f);
-    }
 
     void OnDrawGizmos()
     {

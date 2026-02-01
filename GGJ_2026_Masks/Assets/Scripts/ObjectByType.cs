@@ -4,6 +4,9 @@ public class ObjectByType : MonoBehaviour
 {
     public string tipo; 
     private SpriteRenderer sr;
+    public bool isImpostor = false; 
+    public Color impostorColor = Color.white;
+
 
     void Awake()
     {
