@@ -13,10 +13,10 @@ public class Movement : MonoBehaviour
     private MovementType movementType = MovementType.Horizontal;
 
     [SerializeField]
-    private float speed = 5f;
+    private float speed = 2.2f;
 
     [SerializeField]
-    private float radius = 3f;
+    private float radius = 1.7f;
 
     private float angle = 0f;
     private Vector3 startPosition;
