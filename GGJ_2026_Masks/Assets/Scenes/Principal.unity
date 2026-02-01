@@ -851,7 +851,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aacd670f762f2c34f8b9979c5dd45afc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ClickManager
-  overlayAnimator: {fileID: 0}
+  overlayAnimator: {fileID: 1157376029}
 --- !u!4 &761201710
 Transform:
   m_ObjectHideFlags: 0
