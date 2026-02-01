@@ -26,7 +26,7 @@ public class PanelSpriteController : MonoBehaviour
 
     [Header("Cambio de escena")]
     [SerializeField]
-    private ButtonControl buttonControl;
+    private ButtonsManager buttonsManager;
 
     IEnumerator ActivarBotonTrasTiempo(float tiempo)
     {
@@ -83,5 +83,7 @@ public class PanelSpriteController : MonoBehaviour
     public void PlayGame()
     {
         Debug.Log("PanelSpriteController: Iniciando el juego desde el tutorial.");
+        buttonsManager.PlayGame();
+
     }
 }
