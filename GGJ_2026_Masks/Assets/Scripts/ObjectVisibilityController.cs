@@ -46,8 +46,9 @@ public class ObjectVisibilityController : MonoBehaviour
             if (!string.IsNullOrEmpty(currentFilter)) 
             { 
                 lastChangeTime = Time.time;
-                // Usar el último color guardado
-                overlayAnimator.ToggleMask(lastMaskColor);
+                // Usar el último color guardado y el tipo actual
+                overlayAnimator.ToggleMask(lastMaskColor, currentFilter);
+
                 StartCoroutine(RemoveMaskWithAnimation());
             } 
         }
@@ -58,7 +59,9 @@ public class ObjectVisibilityController : MonoBehaviour
         // Guardar el color para usarlo al quitar la máscara
         lastMaskColor = maskColor;
 
-        overlayAnimator.ToggleMask(maskColor);
+        // 👇 Pasar también el tipo a ToggleMask
+        overlayAnimator.ToggleMask(maskColor, tipo);
+
         float length = overlayAnimator.GetAnimationClipLength("MaskInState");
         yield return new WaitForSeconds(Mathf.Max(0, length - filterAdvanceTimeOn));
 

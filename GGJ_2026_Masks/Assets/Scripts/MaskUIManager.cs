@@ -63,13 +63,12 @@ public class MaskUIManager : MonoBehaviour
         sourceA.volume = 1f;
         sourceB.volume = 0f;
 
+        // 👇 Ya no agregamos listeners a los botones
         for (int i = 0; i < masks.Length; i++)
         {
-            int idx = i;
             var data = masks[i];
             if (data.button != null)
             {
-                data.button.onClick.AddListener(() => OnMaskButtonPressed(idx));
                 Image icon = GetButtonIcon(data.button);
                 if (icon != null)
                 {
@@ -103,26 +102,7 @@ public class MaskUIManager : MonoBehaviour
         PlayClipForIndex(currentMaskIndex);
     }
 
-    void OnMaskButtonPressed(int index)
-    {
-        //if (overlayAnimator != null && overlayAnimator.IsAnimating()) return;
-
-        if (currentMaskIndex == index)
-        {
-            currentMaskIndex = -1;
-            EventManager.OnFilterChanged.Invoke("ALL");
-            
-            
-        }
-        else
-        {
-            currentMaskIndex = index;
-            EventManager.OnFilterChanged.Invoke(MaskIndexToTipo(index));
-        }
-
-        UpdateAllButtonIcons();
-        PlayClipForIndex(currentMaskIndex);
-    }
+    // 👇 Eliminamos OnMaskButtonPressed porque ya no se usa
 
     void UpdateAllButtonIcons()
     {

@@ -513,8 +513,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Movement
   movementType: 0
-  speed: 5
+  speed: 3
   radius: 3
+  isPaused: 0
 --- !u!1 &8281164949737984792
 GameObject:
   m_ObjectHideFlags: 0
