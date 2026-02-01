@@ -661,9 +661,9 @@ MonoBehaviour:
     hexColor: FF0020
   audioSource: {fileID: 662014258}
   clipNone: {fileID: 8300000, guid: 25e364c3910287349a94edf41c1e82dc, type: 3}
-  clipTipo1: {fileID: 0}
-  clipTipo2: {fileID: 0}
-  clipTipo3: {fileID: 0}
+  clipTipo1: {fileID: 8300000, guid: 9de5eb29b41e69a4297948fc8110d93f, type: 3}
+  clipTipo2: {fileID: 8300000, guid: f49358e8372e4394aaa95677dcbd8e09, type: 3}
+  clipTipo3: {fileID: 8300000, guid: 5bc709d541e771f4aade75b7cb58f2c4, type: 3}
   crossfadeDuration: 0.6
 --- !u!4 &662014257
 Transform:
@@ -927,6 +927,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ClickManager
   overlayAnimator: {fileID: 1157376029}
+  clickSound: {fileID: 8300000, guid: 489f464d62e733147b4f99fafd84e05d, type: 3}
 --- !u!4 &761201710
 Transform:
   m_ObjectHideFlags: 0
