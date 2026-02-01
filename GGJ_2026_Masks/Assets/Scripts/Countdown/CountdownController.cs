@@ -3,8 +3,6 @@ using UnityEngine.UI;
 
 public class CountdownController : MonoBehaviour
 {
-    [SerializeField]
-    private HumanGameOver humanGameOver;
 
     // Referencia del objeto Spawner para desactivarlo
     [SerializeField]
@@ -24,10 +22,8 @@ public class CountdownController : MonoBehaviour
 
     public void Start()
     {
-        // Debug.Log("Encontrando GameManager en CountdownController OnEnable");
         currentTime = 0f;
         gameManager = GameManager.Instance;
-        humanGameOver = FindFirstObjectByType<HumanGameOver>();
     }
 
     public void Update()
@@ -47,11 +43,6 @@ public class CountdownController : MonoBehaviour
     {
         Debug.Log("COUNTDOWN SAYS: TIME IS OVER");
         currentTime = maxTime;
-
-        // Un vector con una posicion cualquiera
-        Vector3 blackoutHolePosition = new Vector3(0f, 0f, 0f);
-
-        StartCoroutine(gameManager.BlackoutSequence(blackoutHolePosition));
 
         StartCoroutine(gameManager.FinalBlackoutGameOverSequence());
 

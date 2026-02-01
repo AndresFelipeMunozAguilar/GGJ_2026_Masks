@@ -56,11 +56,10 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator FinalBlackoutGameOverSequence()
     {
+        FindFirstObjectByType<FadeInImagesGroup>().FadeIn();
+
         // Esperar la duración del backout y la animación
         yield return new WaitForSeconds(blackoutDuration + animationDuration);
-
-        // Instanciar el prefab de blackout
-        GameObject blackout = Instantiate(blackoutPrefab);
 
         // Cambiar a la pantalla de Game Over
         ChangeScene(SceneIndex.GameOver);
