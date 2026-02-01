@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: cf626b51cd7394a4b8f8fd36acd103ff
+guid: 8f3dbda809c421049a1b4d2147fa4787
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5969183663674589451
-    second: Tutorial_Cuadro_2_0
+      213: -4825446927628776324
+    second: w 2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,30 +96,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Tutorial_Cuadro_2_0
+      name: w 2_0
       rect:
         serializedVersion: 2
-        x: 188
-        y: 42
-        width: 473
-        height: 378
+        x: 27
+        y: 33
+        width: 194
+        height: 213
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5fe7c9f7513392da0800000000000000
-      internalID: -5969183663674589451
+      spriteID: c7ccf2ce591980db0800000000000000
+      internalID: -4825446927628776324
       vertices: []
       indices: 
       edges: []
@@ -148,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Tutorial_Cuadro_2_0: -5969183663674589451
+      w 2_0: -4825446927628776324
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -43,7 +43,7 @@ public class CountdownController : MonoBehaviour
     {
         Debug.Log("COUNTDOWN SAYS: TIME IS OVER");
         currentTime = maxTime;
-
+        
         StartCoroutine(gameManager.FinalBlackoutGameOverSequence());
 
         // Desactivar el orbe de countdown

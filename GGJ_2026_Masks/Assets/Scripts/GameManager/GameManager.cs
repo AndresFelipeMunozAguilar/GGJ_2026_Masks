@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using System;
+using NUnit.Framework;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,6 +11,8 @@ public class GameManager : MonoBehaviour
     public float blackoutDuration = 2f;
 
     public float animationDuration = 2f;
+
+    public Boolean isAnimationPlaying = false;
 
     [SerializeField]
     private GameObject blackoutPrefab;
@@ -31,6 +35,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("CountdownController: Starting blackout sequence.");
         GameObject blackout = Instantiate(blackoutPrefab);
         Transform blackoutHole = blackout.transform.GetChild(0);
+        isAnimationPlaying = true;
 
         //Sacar por consola que se va a iniciar el blackout
         Debug.Log($"CountdownController: Blackout iniciado y va a esperar {blackoutDuration} segs.");
@@ -52,10 +57,18 @@ public class GameManager : MonoBehaviour
         Debug.Log("CountdownController: Blackout sequence completed.");
 
         Destroy(blackout);
+        isAnimationPlaying = false;
     }
 
     public IEnumerator FinalBlackoutGameOverSequence()
     {
+        // Si ya hay otra animación en curso, esperar a que termine
+        while (isAnimationPlaying)
+        {
+            // Esperar medio segundo antes de comprobar de nuevo
+            yield return new WaitForSeconds(0.5f);
+        }
+
         FindFirstObjectByType<FadeInImagesGroup>().FadeIn();
 
         // Esperar la duración del backout y la animación
@@ -67,6 +80,7 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator FinalWinSequence()
     {
+        isAnimationPlaying = true;
         // Esta función se llama justo después del blackout y de haber esperado el fundido en negro, se espera la animación
         yield return new WaitForSeconds(animationDuration);
 

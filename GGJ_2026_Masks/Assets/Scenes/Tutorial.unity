@@ -499,7 +499,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 61.31549}
-  m_SizeDelta: {x: 950, y: 759.1966}
+  m_SizeDelta: {x: 1040, y: 768}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &844544732
 MonoBehaviour:
@@ -516,9 +516,9 @@ MonoBehaviour:
   imagenPanel: {fileID: 844544733}
   botonCambio: {fileID: 1496252231}
   listaSprites:
-  - {fileID: -7990646181710165866, guid: d6cd698553c34c4489d21e12efb23a29, type: 3}
-  - {fileID: -5969183663674589451, guid: cf626b51cd7394a4b8f8fd36acd103ff, type: 3}
-  - {fileID: 8123447997876371261, guid: 2047812db9c035b4dac2a55ee63e90bb, type: 3}
+  - {fileID: 6693839668131001086, guid: b4edf295b64cf6f41838eaa9d1118366, type: 3}
+  - {fileID: 1770673188495041672, guid: 87781e7c8d4490b4c8c92f034e3ad8b2, type: 3}
+  - {fileID: 3167146226413406439, guid: db3256a14ce80cd4d85bf13b223c39e3, type: 3}
   tiempoEntreCambios: 5
   buttonsManager: {fileID: 844544735}
 --- !u!114 &844544733
@@ -541,7 +541,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -7990646181710165866, guid: d6cd698553c34c4489d21e12efb23a29, type: 3}
+  m_Sprite: {fileID: 6693839668131001086, guid: b4edf295b64cf6f41838eaa9d1118366, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
