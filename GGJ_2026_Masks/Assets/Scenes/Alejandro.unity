@@ -358,6 +358,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ObjectVisibilityController
   cooldown: 0.5
   overlayAnimator: {fileID: 1157376029}
+  filterAdvanceTimeOn: 0.1
+  filterAdvanceTimeOff: 0.1
 --- !u!1 &636528508
 GameObject:
   m_ObjectHideFlags: 0
@@ -788,6 +790,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aacd670f762f2c34f8b9979c5dd45afc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ClickManager
+  overlayAnimator: {fileID: 0}
 --- !u!4 &761201710
 Transform:
   m_ObjectHideFlags: 0
@@ -1017,8 +1020,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5117daa163095c24597c0787d9c7bcfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Spawner
-  prefabTipo1: {fileID: 7167377417486681011, guid: ca82fa6a1c701bb4c94df8b754cca9a8, type: 3}
-  prefabTipo2: {fileID: 7167377417486681011, guid: 1c62b876a8957da40a2522af844e1fe4, type: 3}
+  prefabTipo1: {fileID: 7167377417486681011, guid: 1c62b876a8957da40a2522af844e1fe4, type: 3}
+  prefabTipo2: {fileID: 7167377417486681011, guid: ca82fa6a1c701bb4c94df8b754cca9a8, type: 3}
   prefabTipo3: {fileID: 7167377417486681011, guid: 16828fde0538c2243b36e92fd1d019b0, type: 3}
   numberItems: 10
   impostorCount: 1

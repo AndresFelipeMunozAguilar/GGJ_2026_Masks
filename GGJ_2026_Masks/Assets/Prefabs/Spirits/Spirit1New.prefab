@@ -270,12 +270,12 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 4054265350935512987, guid: c2d6e4f0c6bbd5c44a50bf3102a55344, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6ecfbbf16b85ade46aa53c2bd8f64e5e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 3.93, y: 7.41}
+  m_Size: {x: 7.62, y: 7.62}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -333,8 +333,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.93, y: 7.41}
-    newSize: {x: 3.93, y: 7.41}
+    oldSize: {x: 7.62, y: 7.62}
+    newSize: {x: 7.62, y: 7.62}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -458,7 +458,34 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7f584f0f1a058ef498496e45d191d1d4, type: 3}
   - {fileID: 21300000, guid: dc764814aa3599242917d5b92badae52, type: 3}
   - {fileID: 21300000, guid: 56fe7ff6be7da0c40abb971d0977f97b, type: 3}
+  failFrames:
+  - {fileID: 21300000, guid: 9a1970a6b1a7200439441fc820aae33b, type: 3}
+  - {fileID: 21300000, guid: eae8d0ee8b8241a4eb6f5ef7bd0f1463, type: 3}
+  - {fileID: 21300000, guid: 8cc6d71fa2a233643aa44aa9f6b49cdc, type: 3}
+  - {fileID: 21300000, guid: fc31adcb6bbd4094cb92570710b80e7d, type: 3}
+  - {fileID: 21300000, guid: b9039eed2cc1acd4083ac0e1dd6288b3, type: 3}
+  - {fileID: 21300000, guid: 3bcc16dff076bd84fa51c17ec8625119, type: 3}
+  - {fileID: 21300000, guid: 3f7f2dd4f5a3c2447af83e6474faf8ea, type: 3}
+  - {fileID: 21300000, guid: 91c67cea992c10d47a7395ba6618ed82, type: 3}
+  - {fileID: 21300000, guid: 1fdaba3c3169f2549882b58af3e7d59f, type: 3}
+  - {fileID: 21300000, guid: 1c328b06b9f61344bb7707119904a498, type: 3}
+  - {fileID: 21300000, guid: ff1c2850b3c56e94aa03d366179742e1, type: 3}
+  - {fileID: 21300000, guid: d8addb31846e8dd41be871b4871dc3a2, type: 3}
+  - {fileID: 21300000, guid: b49dde2ca1367754b8201712320a2aff, type: 3}
+  - {fileID: 21300000, guid: 10df8c1bde8342f41bf0e0722979bba7, type: 3}
+  - {fileID: 21300000, guid: f382adea6806ede4d92ee0eea2512754, type: 3}
+  - {fileID: 21300000, guid: 2fe78a6cc137682418c7fa85504c9df3, type: 3}
+  - {fileID: 21300000, guid: 9f7b99ae2b91836459f38758cd33367a, type: 3}
+  - {fileID: 21300000, guid: 00966d451f1db284f8e0ca8520138508, type: 3}
+  - {fileID: 21300000, guid: 0ff9c2ea060c051418db0ef8ec27ba6d, type: 3}
+  - {fileID: 21300000, guid: ef35a4aa906aa9346b0c3bc17ff53a7e, type: 3}
+  - {fileID: 21300000, guid: d10ad87fd661f2447a944e04983ad376, type: 3}
+  - {fileID: 21300000, guid: f216c5f653cb0014cb303701e0c8af59, type: 3}
+  - {fileID: 21300000, guid: a85e9ccf61491db408d7bc1ba9267df8, type: 3}
+  - {fileID: 21300000, guid: f026cc5deeb2dbe4aa88aab1c733ab13, type: 3}
+  - {fileID: 21300000, guid: de9f9e68ad583e746945db692ccde36d, type: 3}
   revealFps: 12
+  failFps: 12
 --- !u!1 &8281164949737984792
 GameObject:
   m_ObjectHideFlags: 0
